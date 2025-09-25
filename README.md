@@ -450,17 +450,17 @@
         <section class="profile">
             <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=150&q=80" alt="Profile Picture" class="profile-pic">
             <div class="profile-info">
-                <h1>jane_doe</h1>
+                <h1>rkive</h1>
                 <div class="profile-stats">
                     <div><strong>125</strong> posts</div>
                     <div><strong>1,254</strong> followers</div>
                     <div><strong>872</strong> following</div>
                 </div>
                 <div class="profile-bio">
-                    <h2>Jane Doe</h2>
-                    <p>Travel enthusiast 🌍 | Photography lover 📸</p>
-                    <p>📍 New York, NY</p>
-                    <a href="#" style="color: #0095f6;">www.janedoe.com</a>
+                    <h2>rkive</h2>
+                    <p></p>
+                    <p></p>
+                    <a</a>
                 </div>
             </div>
         </section>
@@ -477,8 +477,8 @@
         <div id="posts" class="tab-content active">
             <div class="posts-grid">
                 <!-- Post with single image -->
-                <div class="post" data-images='["https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"]' data-caption="Amazing mountain views! 🏔️ #mountains #nature">
-                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Mountain landscape">
+                <div class="post" data-images='["https://drive.google.com/uc?export=view&id=1CTPNkMg1VJCFrvi1mwASpAu6iPUu0xO5&auto=format&fit=crop&w=700&q=80"]' data-caption="Amazing mountain views! 🏔️ #mountains #nature">
+                    <img src="https://drive.google.com/uc?export=view&id=1CTPNkMg1VJCFrvi1mwASpAu6iPUu0xO5&auto=format&fit=crop&w=700&q=80">
                 </div>
                 
                 <!-- Post with multiple images -->
