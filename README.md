@@ -464,9 +464,9 @@
             <div class="profile-info">
                 <h1>rkive</h1>
                 <div class="profile-stats">
-                    <div><strong>125</strong> posts</div>
-                    <div><strong>1,254</strong> followers</div>
-                    <div><strong>872</strong> following</div>
+                    <div><strong>126</strong> posts</div>
+                    <div><strong>48.7M</strong> followers</div>
+                    <div><strong>8</strong> following</div>
                 </div>
                 <div class="profile-bio">
                     <h2>rkive</h2>
