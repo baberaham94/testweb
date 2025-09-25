@@ -26,7 +26,6 @@
         
         /* Header Styles */
         header {
-            border-bottom: 0px solid #dbdbdb;
             background-color: white;
             position: sticky;
             top: 0;
@@ -98,7 +97,7 @@
     flex: 1;
     }
     .profile-header {
-    display: flex;
+    display: block;
     align-items: center;
     margin-bottom: 20px;
     }
@@ -125,7 +124,7 @@
     font-size: 16px;
     }
         
-        .profile-info h2 {
+        .profile-stats h2 {
             font-size: 16px;
             font-weight: 600;
             margin-bottom: 4px;
