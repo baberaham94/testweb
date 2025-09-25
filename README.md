@@ -481,8 +481,6 @@
         <section class="posts-header">
             <a href="#" class="tab-link active" data-tab="posts"><i class="fas fa-th"></i> Posts</a>
             <a href="#" class="tab-link" data-tab="reels"><i class="fas fa-tv"></i> Reels</a>
-            <a href="#" class="tab-link" data-tab="saved"><i class="fas fa-bookmark"></i> Saved</a>
-            <a href="#" class="tab-link" data-tab="tagged"><i class="fas fa-user-tag"></i> Tagged</a>
         </section>
         
         <!-- Posts Tab Content -->
@@ -539,29 +537,7 @@
                     <div style="position: absolute; bottom: 10px; right: 10px; color: white; background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px; font-size: 12px;">▶ REEL</div>
                 </div>
             </div>
-        </div>
-        
-        <!-- Saved Tab Content -->
-        <div id="saved" class="tab-content">
-            <div class="posts-grid">
-                <div class="post" data-images='["https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"]' data-caption="Saved this beautiful sunset for inspiration 🌅 #saved #inspiration">
-                    <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Saved post">
-                </div>
-                
-                <div class="post multiple" data-images='["https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80", "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"]' data-caption="Travel inspiration for future trips ✈️ #travel #bucketlist #wanderlust">
-                    <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Travel">
-                </div>
-            </div>
-        </div>
-        
-        <!-- Tagged Tab Content -->
-        <div id="tagged" class="tab-content">
-            <div class="posts-grid">
-                <div class="post" data-images='["https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"]' data-caption="Tagged in this amazing group photo! 📸 #memories #friends">
-                    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Tagged post">
-                </div>
-            </div>
-        </div>
+        </div>  
     </div>
     
     <!-- Modal -->
