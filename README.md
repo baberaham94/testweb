@@ -482,6 +482,7 @@
     <div class="profile-info">
         <div class="profile-header">
             <h1>rkive</h1>
+            <h2>RM</h2>
             <span class="verified-badge">✓</span>
         </div>
         <div class="profile-stats">
@@ -490,7 +491,6 @@
             <div><strong>8</strong> following</div>
         </div>
         <div class="profile-bio">
-            <h2>RM</h2>
             <p>no g no b</p>
             <a href="#">@bts.bighitofficial</a><br>
             <a href="#">@rpwprpwprpwp</a>
