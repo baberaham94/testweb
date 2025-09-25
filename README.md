@@ -477,8 +477,8 @@
         <div id="posts" class="tab-content active">
             <div class="posts-grid">
                 <!-- Post with single image -->
-                <div class="post" data-images='["https://drive.google.com/uc?export=view&id=1CTPNkMg1VJCFrvi1mwASpAu6iPUu0xO5&auto=format&fit=crop&w=700&q=80"]' data-caption="Amazing mountain views! 🏔️ #mountains #nature">
-                    <img src="https://drive.google.com/uc?export=view&id=1CTPNkMg1VJCFrvi1mwASpAu6iPUu0xO5&auto=format&fit=crop&w=700&q=80">
+                <div class="post" data-images='["https://drive.google.com/uc?export=view&id=1CTPNkMg1VJCFrvi1mwASpAu6iPUu0xO5"]' data-caption="Amazing mountain views! 🏔️ #mountains #nature">
+                    <img src="https://drive.google.com/uc?export=view&id=1CTPNkMg1VJCFrvi1mwASpAu6iPUu0xO5">
                 </div>
                 
                 <!-- Post with multiple images -->
