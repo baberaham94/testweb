@@ -224,14 +224,16 @@
         }
         
         .modal-content {
-            position: relative;
-            max-width: 90vw;
-            max-height: 90vh;
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
+    position: relative;
+    max-width: 95vw;
+    max-height: 95vh;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
         
         .modal-close {
             position: absolute;
@@ -257,11 +259,14 @@
         }
         
         .modal-carousel {
-            position: relative;
-            width: 600px;
-            height: 600px;
-            background: black;
-        }
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
         
         .modal-slides {
             display: flex;
@@ -620,19 +625,28 @@
             modalSlides.innerHTML = '';
             modalDots.innerHTML = '';
 
-            images.forEach((img, index) => {
-                // Create slide
-                const slide = document.createElement('div');
-                slide.className = 'modal-slide';
-                slide.innerHTML = `<img src="${img}" alt="Post image ${index + 1}">`;
-                modalSlides.appendChild(slide);
 
-                // Create dot
+images.forEach((img, index) => {
+    const slide = document.createElement('div');
+    slide.className = 'modal-slide';
+    const imgElement = document.createElement('img');
+    imgElement.src = img;
+    imgElement.alt = `Post image ${index + 1}`;
+    
+    // Resize modal when first image loads
+    if (index === 0) {
+        resizeModalToImage(imgElement);
+    }
+    
+    slide.appendChild(imgElement);
+    modalSlides.appendChild(slide);
+    
+    // Create dot
                 const dot = document.createElement('span');
                 dot.className = `modal-dot ${index === 0 ? 'active' : ''}`;
                 dot.addEventListener('click', () => goToSlide(index));
                 modalDots.appendChild(dot);
-            });
+});
 
             updateModalCarousel();
             modal.classList.add('active');
@@ -675,6 +689,45 @@
                 updateModalCarousel();
             }
         }
+
+        function resizeModalToImage(imgElement) {
+    const modal = document.querySelector('.modal-carousel');
+    const img = imgElement;
+    
+    // Wait for image to load
+    if (img.complete) {
+        setModalSize(img);
+    } else {
+        img.onload = () => setModalSize(img);
+    }
+}
+
+function setModalSize(img) {
+    const modal = document.querySelector('.modal-carousel');
+    const maxWidth = window.innerWidth * 0.9;
+    const maxHeight = window.innerHeight * 0.8;
+    
+    let width = img.naturalWidth;
+    let height = img.naturalHeight;
+    
+    // Scale down if too large
+    if (width > maxWidth || height > maxHeight) {
+        const aspectRatio = width / height;
+        
+        if (width > maxWidth) {
+            width = maxWidth;
+            height = width / aspectRatio;
+        }
+        
+        if (height > maxHeight) {
+            height = maxHeight;
+            width = height * aspectRatio;
+        }
+    }
+    
+    modal.style.width = width + 'px';
+    modal.style.height = height + 'px';
+}
 
         // Event listeners
         closeBtn.addEventListener('click', closeModal);
