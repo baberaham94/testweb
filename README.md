@@ -483,7 +483,6 @@
         <div class="profile-header">
             <h1>rkive</h1><br>
             <h2>RM</h2>
-            <span class="verified-badge">✓</span>
         </div>
         <div class="profile-stats">
             <div><strong>126</strong> posts</div>
