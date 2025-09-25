@@ -460,7 +460,7 @@
     <div class="container">
         <!-- Profile Section -->
         <section class="profile">
-            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=150&q=80" alt="Profile Picture" class="profile-pic">
+            <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/profile.jpg" alt="Profile Picture" class="profile-pic">
             <div class="profile-info">
                 <h1>rkive</h1>
                 <div class="profile-stats">
@@ -470,9 +470,9 @@
                 </div>
                 <div class="profile-bio">
                     <h2>rkive</h2>
-                    <p></p>
-                    <p></p>
-                    <a</a>
+                    <p>no g no b</p>
+                    <p>@bts.bighitofficial</p>
+                    <a>@rpwprpwprpwp</a>
                 </div>
             </div>
         </section>
