@@ -26,6 +26,7 @@
         
         /* Header Styles */
         header {
+            border-bottom: none;
             background-color: white;
             position: sticky;
             top: 0;
@@ -101,11 +102,12 @@
     align-items: center;
     margin-bottom: 20px;
     }
-        .profile-info h1 {
+        .profile-header h1 {
     font-size: 28px;
     font-weight: 300;
-    margin-bottom: 0;
+    margin-bottom: 0px;
     margin-right: 8px;
+    border-bottom: none;
     }
         
        .verified-badge {
@@ -124,10 +126,11 @@
     font-size: 16px;
     }
         
-        .profile-stats h2 {
+        .profile-header h2 {
             font-size: 16px;
             font-weight: 600;
             margin-bottom: 4px;
+            border-bottom: none;
         }
         
         .profile-bio p {
