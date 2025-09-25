@@ -114,12 +114,16 @@
         .profile-info h2 {
             font-size: 16px;
             font-weight: 600;
-            margin-bottom: 4px;
+            margin-bottom: 0px;
         }
         
         .profile-bio p {
             margin-bottom: 2px;
         }
+        .profile-bio a {
+    color: #0095f6; /* Instagram blue */
+    text-decoration: none;
+}
         
         /* Posts Section */
         .posts-header {
