@@ -46,20 +46,38 @@
         .logo {
             font-family: 'Grand Hotel', cursive;
             font-size: 24px;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
         }
         
         .search-bar {
             background: #fafafa;
             border: 1px solid #dbdbdb;
-            border-radius: 3px;
-            padding: 5px 10px;
-            width: 215px;
+            border-radius: 8px;
+            padding: 8px 16px;
+            width: 268px;
+        }
+        
+        .search-bar input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            outline: none;
+            font-size: 14px;
         }
         
         .nav-icons a {
-            margin-left: 15px;
+            margin-left: 22px;
             color: #262626;
-            font-size: 20px;
+            font-size: 22px;
+            transition: transform 0.2s;
+        }
+        
+        .nav-icons a:hover {
+            transform: scale(1.1);
         }
         
         /* Profile Section */
@@ -75,7 +93,7 @@
             border-radius: 50%;
             margin-right: 30px;
             object-fit: cover;
-            border: 1px solid #dbdbdb;
+            border: 3px solid #dbdbdb;
         }
         
         .profile-info h1 {
@@ -91,11 +109,17 @@
         
         .profile-stats div {
             margin-right: 40px;
+            font-size: 16px;
         }
         
         .profile-bio h2 {
             font-size: 16px;
             font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .profile-bio p {
+            margin-bottom: 2px;
         }
         
         /* Posts Section */
@@ -116,6 +140,8 @@
             text-decoration: none;
             display: flex;
             align-items: center;
+            cursor: pointer;
+            transition: color 0.2s;
         }
         
         .posts-header a.active {
@@ -134,6 +160,14 @@
             margin-top: 30px;
         }
         
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
         .post {
             position: relative;
             aspect-ratio: 1;
@@ -141,150 +175,218 @@
             border-radius: 3px;
             overflow: hidden;
             cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .post:hover {
+            transform: scale(1.02);
         }
         
         .post img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s;
         }
         
-        .post:hover img {
-            transform: scale(1.05);
+        /* Multiple images indicator */
+        .post.multiple::after {
+            content: '□□';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            font-size: 14px;
+            text-shadow: 0 0 4px rgba(0,0,0,0.5);
         }
         
-        .carousel-post {
-            position: relative;
-            background-color: #000;
-            border-radius: 3px;
-            overflow: hidden;
-            margin-bottom: 28px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .carousel-container {
-            position: relative;
-            height: 500px;
-            overflow: hidden;
-        }
-        
-        .carousel-slides {
-            display: flex;
-            transition: transform 0.5s ease;
-            height: 100%;
-        }
-        
-        .carousel-slide {
-            min-width: 100%;
-            height: 100%;
-        }
-        
-        .carousel-slide img {
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
         }
         
-        .carousel-nav {
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        .modal-carousel {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            background: black;
+        }
+        
+        .modal-slides {
+            display: flex;
+            transition: transform 0.4s ease;
+            height: 100%;
+        }
+        
+        .modal-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-slide img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .modal-nav {
             position: absolute;
             top: 50%;
             width: 100%;
             display: flex;
             justify-content: space-between;
             transform: translateY(-50%);
-            padding: 0 10px;
+            padding: 0 15px;
+            pointer-events: none;
         }
         
-        .carousel-nav button {
-            background: rgba(255, 255, 255, 0.7);
+        .modal-nav button {
+            background: rgba(255, 255, 255, 0.8);
             border: none;
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 16px;
+            transition: all 0.2s;
+            pointer-events: all;
         }
         
-        .carousel-dots {
+        .modal-nav button:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
+        }
+        
+        .modal-nav button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .modal-dots {
             display: flex;
             justify-content: center;
             position: absolute;
-            bottom: 15px;
+            bottom: 20px;
             width: 100%;
         }
         
-        .carousel-dot {
-            width: 6px;
-            height: 6px;
+        .modal-dot {
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            margin: 0 3px;
+            background: rgba(255, 255, 255, 0.4);
+            margin: 0 4px;
             cursor: pointer;
+            transition: background 0.2s;
         }
         
-        .carousel-dot.active {
+        .modal-dot.active {
             background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .modal-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 40px 20px 20px;
+        }
+        
+        .modal-username {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .modal-caption {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        /* Sample feed post (keeping original for reference) */
+        .feed-post {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         
         .post-header {
             display: flex;
             align-items: center;
-            padding: 14px 16px;
+            padding: 16px;
         }
         
         .post-avatar {
             width: 32px;
             height: 32px;
             border-radius: 50%;
-            margin-right: 10px;
+            margin-right: 12px;
             object-fit: cover;
         }
         
         .post-username {
             font-weight: 600;
-        }
-        
-        .post-actions {
-            padding: 10px 16px;
-            display: flex;
-            justify-content: space-between;
-            font-size: 24px;
-        }
-        
-        .post-actions-left i {
-            margin-right: 15px;
-            cursor: pointer;
-        }
-        
-        .post-likes {
-            padding: 0 16px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        
-        .post-caption {
-            padding: 0 16px 10px;
-            display: flex;
-        }
-        
-        .post-caption-username {
-            font-weight: 600;
-            margin-right: 5px;
-        }
-        
-        .post-comments {
-            padding: 0 16px 10px;
-            color: #8e8e8e;
-        }
-        
-        .post-time {
-            padding: 0 16px 12px;
-            color: #8e8e8e;
-            font-size: 10px;
-            text-transform: uppercase;
+            font-size: 14px;
         }
         
         /* Responsive Design */
@@ -312,15 +414,17 @@
             .search-bar {
                 display: none;
             }
+            
+            .modal-carousel {
+                width: 90vw;
+                height: 90vw;
+                max-height: 70vh;
+            }
         }
         
         @media (max-width: 480px) {
             .posts-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .carousel-container {
-                height: 400px;
             }
         }
     </style>
@@ -330,7 +434,7 @@
         <div class="header-content">
             <div class="logo">Instagram</div>
             <div class="search-bar">
-                <input type="text" placeholder="Search" style="border: none; background: transparent; width: 100%; outline: none;">
+                <input type="text" placeholder="Search">
             </div>
             <div class="nav-icons">
                 <a href="#"><i class="fas fa-home"></i></a>
@@ -357,140 +461,288 @@
                     <h2>Jane Doe</h2>
                     <p>Travel enthusiast 🌍 | Photography lover 📸</p>
                     <p>📍 New York, NY</p>
-                    <a href="#">www.janedoe.com</a>
+                    <a href="#" style="color: #0095f6;">www.janedoe.com</a>
                 </div>
             </div>
         </section>
         
         <!-- Posts Navigation -->
         <section class="posts-header">
-            <a href="#" class="active"><i class="fas fa-th"></i> Posts</a>
-            <a href="#"><i class="fas fa-tv"></i> Reels</a>
-            <a href="#"><i class="fas fa-bookmark"></i> Saved</a>
-            <a href="#"><i class="fas fa-user-tag"></i> Tagged</a>
+            <a href="#" class="tab-link active" data-tab="posts"><i class="fas fa-th"></i> Posts</a>
+            <a href="#" class="tab-link" data-tab="reels"><i class="fas fa-tv"></i> Reels</a>
+            <a href="#" class="tab-link" data-tab="saved"><i class="fas fa-bookmark"></i> Saved</a>
+            <a href="#" class="tab-link" data-tab="tagged"><i class="fas fa-user-tag"></i> Tagged</a>
         </section>
         
-        <!-- Posts Grid -->
-        <section class="posts-grid">
-            <!-- Post 1 - Single Image -->
-            <div class="post">
-                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Mountain landscape">
+        <!-- Posts Tab Content -->
+        <div id="posts" class="tab-content active">
+            <div class="posts-grid">
+                <!-- Post with single image -->
+                <div class="post" data-images='["https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"]' data-caption="Amazing mountain views! 🏔️ #mountains #nature">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Mountain landscape">
+                </div>
+                
+                <!-- Post with multiple images -->
+                <div class="post multiple" data-images='["https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80", "https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80", "https://images.unsplash.com/photo-1528543606781-2f6e6857f318?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"]' data-caption="Winter wonderland adventure! ❄️ Swipe to see more breathtaking shots! #winter #snow #adventure">
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Snowy mountain">
+                </div>
+                
+                <!-- Post with single image -->
+                <div class="post" data-images='["https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"]' data-caption="Perfect reflection at the lake 🌊 #reflection #lake #peaceful">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Lake view">
+                </div>
+                
+                <!-- Post with multiple images -->
+                <div class="post multiple" data-images='["https://images.unsplash.com/photo-1528543606781-2f6e6857f318?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80", "https://images.unsplash.com/photo-1515238152791-8216bfdf89a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80", "https://images.unsplash.com/photo-1464822759844-d150baec3377?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"]' data-caption="Epic sunrise hike! 🌅 The early bird really does catch the worm... and the best views! #sunrise #hiking #earlybird">
+                    <img src="https://images.unsplash.com/photo-1528543606781-2f6e6857f318?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Sunrise">
+                </div>
+                
+                <!-- Post with single image -->
+                <div class="post" data-images='["https://images.unsplash.com/photo-1515238152791-8216bfdf89a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"]' data-caption="Forest therapy session 🌲 Nature is the best medicine #forest #therapy #green">
+                    <img src="https://images.unsplash.com/photo-1515238152791-8216bfdf89a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Forest">
+                </div>
+                
+                <!-- Post with multiple images -->
+                <div class="post multiple" data-images='["https://images.unsplash.com/photo-1464822759844-d150baec3377?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80", "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"]' data-caption="Mountain peak conquered! 🎯 What an incredible journey to the top! #mountaineering #achievement #adventure">
+                    <img src="https://images.unsplash.com/photo-1464822759844-d150baec3377?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Mountain peak">
+                </div>
             </div>
-            
-            <!-- Post 2 - Single Image -->
-            <div class="post">
-                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Snowy mountain">
-            </div>
-            
-            <!-- Post 3 - Single Image -->
-            <div class="post">
-                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Lake view">
-            </div>
-        </section>
+        </div>
         
-        <!-- Carousel Post Example -->
-        <section class="carousel-post">
-            <div class="post-header">
-                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=150&q=80" alt="Profile Picture" class="post-avatar">
-                <div class="post-username">jane_doe</div>
-            </div>
-            
-            <div class="carousel-container">
-                <div class="carousel-slides">
-                    <div class="carousel-slide">
-                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80" alt="Mountain landscape">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80" alt="Snowy mountain">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80" alt="Lake view">
-                    </div>
+        <!-- Reels Tab Content -->
+        <div id="reels" class="tab-content">
+            <div class="posts-grid">
+                <!-- Reel posts -->
+                <div class="post" data-images='["https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"]' data-caption="30-second forest meditation 🧘‍♀️ #reels #meditation #forest">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Forest path">
+                    <div style="position: absolute; bottom: 10px; right: 10px; color: white; background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px; font-size: 12px;">▶ REEL</div>
                 </div>
                 
-                <div class="carousel-nav">
-                    <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
-                    <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
+                <div class="post multiple" data-images='["https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80", "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"]' data-caption="Time-lapse sunset magic ✨ Watch till the end! #timelapse #sunset #magic">
+                    <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Sunset">
+                    <div style="position: absolute; bottom: 10px; right: 10px; color: white; background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px; font-size: 12px;">▶ REEL</div>
                 </div>
                 
-                <div class="carousel-dots">
-                    <span class="carousel-dot active"></span>
-                    <span class="carousel-dot"></span>
-                    <span class="carousel-dot"></span>
+                <div class="post" data-images='["https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"]' data-caption="Quick hiking tips! 🥾 Save this for your next adventure #hikingtips #outdoor #adventure">
+                    <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Hiking">
+                    <div style="position: absolute; bottom: 10px; right: 10px; color: white; background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px; font-size: 12px;">▶ REEL</div>
                 </div>
             </div>
-            
-            <div class="post-actions">
-                <div class="post-actions-left">
-                    <i class="far fa-heart"></i>
-                    <i class="far fa-comment"></i>
-                    <i class="far fa-paper-plane"></i>
+        </div>
+        
+        <!-- Saved Tab Content -->
+        <div id="saved" class="tab-content">
+            <div class="posts-grid">
+                <div class="post" data-images='["https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"]' data-caption="Saved this beautiful sunset for inspiration 🌅 #saved #inspiration">
+                    <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Saved post">
                 </div>
-                <div class="post-actions-right">
-                    <i class="far fa-bookmark"></i>
+                
+                <div class="post multiple" data-images='["https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80", "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"]' data-caption="Travel inspiration for future trips ✈️ #travel #bucketlist #wanderlust">
+                    <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Travel">
                 </div>
             </div>
-            
-            <div class="post-likes">1,254 likes</div>
-            
-            <div class="post-caption">
-                <span class="post-caption-username">jane_doe</span>
-                <span>Beautiful views from my hiking trip last weekend! 🏔️ #nature #mountains #hiking</span>
+        </div>
+        
+        <!-- Tagged Tab Content -->
+        <div id="tagged" class="tab-content">
+            <div class="posts-grid">
+                <div class="post" data-images='["https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80"]' data-caption="Tagged in this amazing group photo! 📸 #memories #friends">
+                    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Tagged post">
+                </div>
             </div>
-            
-            <div class="post-comments">View all 42 comments</div>
-            
-            <div class="post-time">2 DAYS AGO</div>
-        </section>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal" id="postModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-carousel">
+                <div class="modal-slides" id="modalSlides"></div>
+                <div class="modal-nav">
+                    <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="modal-dots" id="modalDots"></div>
+                <div class="modal-info">
+                    <div class="modal-username">jane_doe</div>
+                    <div class="modal-caption" id="modalCaption"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
-        // Carousel functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const carouselSlides = document.querySelector('.carousel-slides');
-            const slides = document.querySelectorAll('.carousel-slide');
-            const prevButton = document.querySelector('.carousel-prev');
-            const nextButton = document.querySelector('.carousel-next');
-            const dots = document.querySelectorAll('.carousel-dot');
-            
-            let currentSlide = 0;
-            const slideCount = slides.length;
-            
-            // Function to update carousel position
-            function updateCarousel() {
-                carouselSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        // Tab switching functionality
+        document.querySelectorAll('.tab-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
                 
-                // Update dots
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentSlide);
-                });
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                link.classList.add('active');
+                const tabId = link.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('postModal');
+        const modalSlides = document.getElementById('modalSlides');
+        const modalDots = document.getElementById('modalDots');
+        const modalCaption = document.getElementById('modalCaption');
+        const closeBtn = document.querySelector('.modal-close');
+        const prevBtn = document.querySelector('.modal-prev');
+        const nextBtn = document.querySelector('.modal-next');
+
+        let currentModalSlide = 0;
+        let modalImages = [];
+
+        // Open modal when clicking on a post
+        document.addEventListener('click', (e) => {
+            const post = e.target.closest('.post');
+            if (post) {
+                openModal(post);
             }
+        });
+
+        function openModal(post) {
+            const images = JSON.parse(post.getAttribute('data-images'));
+            const caption = post.getAttribute('data-caption') || '';
             
-            // Next slide
-            nextButton.addEventListener('click', function() {
-                currentSlide = (currentSlide + 1) % slideCount;
-                updateCarousel();
+            modalImages = images;
+            modalCaption.textContent = caption;
+            currentModalSlide = 0;
+
+            // Clear and rebuild slides
+            modalSlides.innerHTML = '';
+            modalDots.innerHTML = '';
+
+            images.forEach((img, index) => {
+                // Create slide
+                const slide = document.createElement('div');
+                slide.className = 'modal-slide';
+                slide.innerHTML = `<img src="${img}" alt="Post image ${index + 1}">`;
+                modalSlides.appendChild(slide);
+
+                // Create dot
+                const dot = document.createElement('span');
+                dot.className = `modal-dot ${index === 0 ? 'active' : ''}`;
+                dot.addEventListener('click', () => goToSlide(index));
+                modalDots.appendChild(dot);
             });
+
+            updateModalCarousel();
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function updateModalCarousel() {
+            modalSlides.style.transform = `translateX(-${currentModalSlide * 100}%)`;
             
-            // Previous slide
-            prevButton.addEventListener('click', function() {
-                currentSlide = (currentSlide - 1 + slideCount) % slideCount;
-                updateCarousel();
+            // Update dots
+            document.querySelectorAll('.modal-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentModalSlide);
             });
-            
-            // Dot navigation
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', function() {
-                    currentSlide = index;
-                    updateCarousel();
+
+            // Update navigation buttons
+            prevBtn.disabled = currentModalSlide === 0;
+            nextBtn.disabled = currentModalSlide === modalImages.length - 1;
+        }
+
+        function goToSlide(index) {
+            currentModalSlide = index;
+            updateModalCarousel();
+        }
+
+        function nextSlide() {
+            if (currentModalSlide < modalImages.length - 1) {
+                currentModalSlide++;
+                updateModalCarousel();
+            }
+        }
+
+        function prevSlide() {
+            if (currentModalSlide > 0) {
+                currentModalSlide--;
+                updateModalCarousel();
+            }
+        }
+
+        // Event listeners
+        closeBtn.addEventListener('click', closeModal);
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (modal.classList.contains('active')) {
+                switch(e.key) {
+                    case 'Escape':
+                        closeModal();
+                        break;
+                    case 'ArrowLeft':
+                        prevSlide();
+                        break;
+                    case 'ArrowRight':
+                        nextSlide();
+                        break;
+                }
+            }
+        });
+
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        modalSlides.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        modalSlides.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe left - next slide
+                    nextSlide();
+                } else {
+                    // Swipe right - previous slide
+                    prevSlide();
+                }
+            }
+        }
+
+        // Add smooth animations and transitions
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add loading animation to images
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('load', () => {
+                    img.style.opacity = '1';
                 });
             });
-            
-            // Auto-advance carousel (optional)
-            setInterval(function() {
-                currentSlide = (currentSlide + 1) % slideCount;
-                updateCarousel();
-            }, 5000);
         });
     </script>
 </body>
