@@ -477,8 +477,8 @@
         <div id="posts" class="tab-content active">
             <div class="posts-grid">
                 <!-- Post with single image -->
-                <div class="post" data-images='["https://github.com/baberaham94/testweb/blob/d5d3a68c38dba73fbc9f43f8c12c2d80f5482105/test1.jpg"]' data-caption="Amazing mountain views! 🏔️ #mountains #nature">
-                    <img src="https://github.com/baberaham94/testweb/blob/d5d3a68c38dba73fbc9f43f8c12c2d80f5482105/test1.jpg">
+                <div class="post" data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/images/test1.jpg"]' data-caption="Amazing mountain views! 🏔️ #mountains #nature">
+                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/test1.jpg">
                 </div>
                 
                 <!-- Post with multiple images -->
