@@ -129,7 +129,7 @@
         .profile-header h2 {
             font-size: 16px;
             font-weight: 600;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             border-bottom: none;
         }
         
@@ -483,7 +483,7 @@
     <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/profile.jpg" alt="Profile Picture" class="profile-pic">
     <div class="profile-info">
         <div class="profile-header">
-            <h1>rkive</h1><br>
+            <h1>rkive</h1>
             <h2>RM</h2>
         </div>
         <div class="profile-stats">
