@@ -131,6 +131,7 @@
             font-weight: 600;
             margin-bottom: 2px;
             border-bottom: none;
+            margin-top: 0px;
         }
         
         .profile-bio p {
