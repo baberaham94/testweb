@@ -469,7 +469,6 @@
                     <div><strong>8</strong> following</div>
                 </div>
                 <div class="profile-bio">
-                    <h2>rkive</h2>
                     <p>no g no b</p>
                     <p>@bts.bighitofficial</p>
                     <a>@rpwprpwprpwp</a>
