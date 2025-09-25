@@ -475,8 +475,8 @@
                 </div>
                 <div class="profile-bio">
                     <p>no g no b</p>
-                    <a>@bts.bighitofficial</a>
-                    <a>@rpwprpwprpwp</a>
+                    <a href="#">@bts.bighitofficial</a><br>
+            <a href="#">@rpwprpwprpwp</a>
                 </div>
             </div>
         </section>
