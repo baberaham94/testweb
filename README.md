@@ -94,31 +94,45 @@
             object-fit: cover;
             border: 3px solid #dbdbdb;
         }
-        
+        .profile-info {
+    flex: 1;
+    }
+    .profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    }
         .profile-info h1 {
-            font-size: 28px;
-            font-weight: 300;
-            margin-bottom: 8px;
-        }
+    font-size: 28px;
+    font-weight: 300;
+    margin-bottom: 0;
+    margin-right: 8px;
+    }
         
-        .profile-stats {
-            display: flex;
-            margin-bottom: 20px;
-        }
-        
-        .profile-stats div {
-            margin-right: 40px;
-            font-size: 16px;
-        }
+       .verified-badge {
+    color: #0095f6;
+    font-size: 20px;
+    font-weight: bold;
+    }
+
+    .profile-stats {
+    display: flex;
+    margin-bottom: 20px;
+    }
+
+    .profile-stats div {
+    margin-right: 40px;
+    font-size: 16px;
+    }
         
         .profile-info h2 {
             font-size: 16px;
             font-weight: 600;
-            margin-bottom: 0px;
+            margin-bottom: 4px;
         }
         
         .profile-bio p {
-            margin-bottom: 2px;
+            margin-bottom: 4px;
         }
         .profile-bio a {
     color: #0095f6; /* Instagram blue */
@@ -464,22 +478,25 @@
     <div class="container">
         <!-- Profile Section -->
         <section class="profile">
-            <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/profile.jpg" alt="Profile Picture" class="profile-pic">
-            <div class="profile-info">
-                <h1>rkive</h1>
-                <h2>RM</h2>
-                <div class="profile-stats">
-                    <div><strong>126</strong> posts</div>
-                    <div><strong>48.7M</strong> followers</div>
-                    <div><strong>8</strong> following</div>
-                </div>
-                <div class="profile-bio">
-                    <p>no g no b</p>
-                    <a href="#">@bts.bighitofficial</a><br>
+    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/profile.jpg" alt="Profile Picture" class="profile-pic">
+    <div class="profile-info">
+        <div class="profile-header">
+            <h1>rkive</h1>
+            <span class="verified-badge">✓</span>
+        </div>
+        <div class="profile-stats">
+            <div><strong>126</strong> posts</div>
+            <div><strong>48.7M</strong> followers</div>
+            <div><strong>8</strong> following</div>
+        </div>
+        <div class="profile-bio">
+            <h2>RM</h2>
+            <p>no g no b</p>
+            <a href="#">@bts.bighitofficial</a><br>
             <a href="#">@rpwprpwprpwp</a>
-                </div>
-            </div>
-        </section>
+        </div>
+    </div>
+    </section>
         
         <!-- Posts Navigation -->
         <section class="posts-header">
