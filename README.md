@@ -365,6 +365,13 @@
             font-size: 14px;
             opacity: 0.9;
         }
+        .modal-date {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+}
         
         /* Sample feed post (keeping original for reference) */
         .feed-post {
@@ -482,7 +489,7 @@
         <div id="posts" class="tab-content active">
             <div class="posts-grid">
                 <!-- Post with single image -->
-                <div class="post" data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/images/test1.jpg"]' data-caption="Amazing mountain views! 🏔️ #mountains #nature">
+                <div class="post" data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/images/test1.jpg"]' data-caption="Amazing mountain views! 🏔️ #mountains #nature" data-date="2024-01-15">
                     <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/test1.jpg">
                 </div>
                 
@@ -571,6 +578,7 @@
                 <div class="modal-info">
                     <div class="modal-username">jane_doe</div>
                     <div class="modal-caption" id="modalCaption"></div>
+                    <div class="modal-date" id="modalDate"></div>
                 </div>
             </div>
         </div>
@@ -614,9 +622,12 @@
         });
 
         function openModal(post) {
-            const images = JSON.parse(post.getAttribute('data-images'));
+           const images = JSON.parse(post.getAttribute('data-images'));
             const caption = post.getAttribute('data-caption') || '';
-            
+            const dateString = post.getAttribute('data-date') || '';
+             const modalDate = document.getElementById('modalDate');
+    modalDate.textContent = dateString ? formatInstagramDate(dateString) : '';
+    
             modalImages = images;
             modalCaption.textContent = caption;
             currentModalSlide = 0;
@@ -626,12 +637,12 @@
             modalDots.innerHTML = '';
 
 
-images.forEach((img, index) => {
-    const slide = document.createElement('div');
-    slide.className = 'modal-slide';
-    const imgElement = document.createElement('img');
-    imgElement.src = img;
-    imgElement.alt = `Post image ${index + 1}`;
+            images.forEach((img, index) => {
+            const slide = document.createElement('div');
+            slide.className = 'modal-slide';
+            const imgElement = document.createElement('img');
+            imgElement.src = img;
+            imgElement.alt = `Post image ${index + 1}`;
     
     // Resize modal when first image loads
     if (index === 0) {
@@ -675,6 +686,25 @@ images.forEach((img, index) => {
             currentModalSlide = index;
             updateModalCarousel();
         }
+        
+        function formatInstagramDate(dateString) {
+    const postDate = new Date(dateString);
+    const now = new Date();
+    const diffTime = Math.abs(now - postDate);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    const diffWeeks = Math.ceil(diffDays / 7);
+    const diffMonths = Math.ceil(diffDays / 30);
+    const diffYears = Math.ceil(diffDays / 365);
+
+    if (diffDays === 1) return "1 day ago";
+    if (diffDays < 7) return `${diffDays} days ago`;
+    if (diffWeeks === 1) return "1 week ago";
+    if (diffWeeks < 4) return `${diffWeeks} weeks ago`;
+    if (diffMonths === 1) return "1 month ago";
+    if (diffMonths < 12) return `${diffMonths} months ago`;
+    if (diffYears === 1) return "1 year ago";
+    return `${diffYears} years ago`;
+}
 
         function nextSlide() {
             if (currentModalSlide < modalImages.length - 1) {
