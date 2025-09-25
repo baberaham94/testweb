@@ -463,6 +463,7 @@
             <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/profile.jpg" alt="Profile Picture" class="profile-pic">
             <div class="profile-info">
                 <h1>rkive</h1>
+                <h2>RM</h2>
                 <div class="profile-stats">
                     <div><strong>126</strong> posts</div>
                     <div><strong>48.7M</strong> followers</div>
