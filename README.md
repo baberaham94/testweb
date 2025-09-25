@@ -111,7 +111,7 @@
             font-size: 16px;
         }
         
-        .profile-bio h2 {
+        .profile-info h2 {
             font-size: 16px;
             font-weight: 600;
             margin-bottom: 4px;
