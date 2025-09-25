@@ -126,13 +126,14 @@
     font-size: 16px;
     }
         
-        .profile-header h2 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 2px;
-            border-bottom: none;
+        
+        .profile-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    border-bottom: none;
             margin-top: 0px;
-        }
+    }
         
         .profile-bio p {
             margin-bottom: 4px;
@@ -485,7 +486,7 @@
     <div class="profile-info">
         <div class="profile-header">
             <h1>rkive</h1>
-            <h2>RM</h2>
+            <p class="profile-name">RM</p>
         </div>
         <div class="profile-stats">
             <div><strong>126</strong> posts</div>
