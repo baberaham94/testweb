@@ -26,7 +26,7 @@
         
         /* Header Styles */
         header {
-            border-bottom: 1px solid #dbdbdb;
+            border-bottom: 0px solid #dbdbdb;
             background-color: white;
             position: sticky;
             top: 0;
@@ -98,7 +98,7 @@
         .profile-info h1 {
             font-size: 28px;
             font-weight: 300;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
         
         .profile-stats {
