@@ -467,6 +467,40 @@
                 grid-template-columns: 1fr;
             }
         }
+
+.modal-slide video {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.video-controls {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.video-controls button {
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all 0.2s;
+}
+
+.video-controls button:hover {
+    background: rgba(255, 255, 255, 1);
+}
     </style>
 </head>
 <body>    
@@ -519,16 +553,14 @@
         </div>
         
         <!-- Reels Tab Content -->
-        <div id="reels" class="tab-content">
-            <div class="posts-grid">
-                <!-- Reel posts -->
-                <div class="post" data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025.mp4"]' data-caption="#광고 Art captured. @samsungtv #SamsungArtTV" data-date="2025-06-20">
-                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025_cover.jpg">
-                    <div style="position: absolute; bottom: 10px; right: 10px; color: white; background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px; font-size: 12px;">▶ REEL</div>
-                </div>
-            </div>
-        </div>  
-    </div>
+        <div class="post reel" 
+     data-type="video"
+     data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025.mp4"]' 
+     data-caption="#광고 Art captured. @samsungtv #SamsungArtTV" 
+     data-date="2025-06-20">
+    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025_cover.jpg">
+    <div style="position: absolute; bottom: 10px; right: 10px; color: white; background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px; font-size: 12px;">▶ REEL</div>
+</div>
     
     <!-- Modal -->
     <div class="modal" id="postModal">
@@ -545,6 +577,10 @@
                     <div class="modal-username">jane_doe</div>
                     <div class="modal-caption" id="modalCaption"></div>
                     <div class="modal-date" id="modalDate"></div>
+                    <div class="video-controls" id="videoControls" style="display: none;">
+                        <button id="playPauseBtn"><i class="fas fa-play"></i></button>
+                        <button id="muteBtn"><i class="fas fa-volume-up"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -587,53 +623,111 @@
             }
         });
 
-        function openModal(post) {
-           const images = JSON.parse(post.getAttribute('data-images'));
-            const caption = post.getAttribute('data-caption') || '';
-            const dateString = post.getAttribute('data-date') || '';
-             const modalDate = document.getElementById('modalDate');
+       function openModal(post) {
+    const images = JSON.parse(post.getAttribute('data-images'));
+    const caption = post.getAttribute('data-caption') || '';
+    const dateString = post.getAttribute('data-date') || '';
+    const isVideo = post.getAttribute('data-type') === 'video';
+    const modalDate = document.getElementById('modalDate');
+    const videoControls = document.getElementById('videoControls');
+    
     modalDate.textContent = dateString ? formatInstagramDate(dateString) : '';
     
-            modalImages = images;
-            modalCaption.textContent = caption;
-            currentModalSlide = 0;
+    modalImages = images;
+    modalCaption.textContent = caption;
+    currentModalSlide = 0;
 
-            // Clear and rebuild slides
-            modalSlides.innerHTML = '';
-            modalDots.innerHTML = '';
+    // Clear and rebuild slides
+    modalSlides.innerHTML = '';
+    modalDots.innerHTML = '';
 
-
-            images.forEach((img, index) => {
-            const slide = document.createElement('div');
-            slide.className = 'modal-slide';
+    images.forEach((src, index) => {
+        const slide = document.createElement('div');
+        slide.className = 'modal-slide';
+        
+        if (isVideo) {
+            const videoElement = document.createElement('video');
+            videoElement.src = src;
+            videoElement.controls = false; // We'll use custom controls
+            videoElement.preload = 'metadata';
+            videoElement.style.maxWidth = '100%';
+            videoElement.style.maxHeight = '100%';
+            videoElement.style.objectFit = 'contain';
+            
+            // Auto-resize modal to video dimensions
+            videoElement.addEventListener('loadedmetadata', () => {
+                if (index === 0) {
+                    resizeModalToVideo(videoElement);
+                }
+            });
+            
+            slide.appendChild(videoElement);
+            videoControls.style.display = 'flex';
+        } else {
             const imgElement = document.createElement('img');
-            imgElement.src = img;
+            imgElement.src = src;
             imgElement.alt = `Post image ${index + 1}`;
+            
+            if (index === 0) {
+                resizeModalToImage(imgElement);
+            }
+            
+            slide.appendChild(imgElement);
+            videoControls.style.display = 'none';
+        }
+        
+        modalSlides.appendChild(slide);
+        
+        // Create dot
+        const dot = document.createElement('span');
+        dot.className = `modal-dot ${index === 0 ? 'active' : ''}`;
+        dot.addEventListener('click', () => goToSlide(index));
+        modalDots.appendChild(dot);
+    });
+
+    updateModalCarousel();
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+        // function for video resizing
+function resizeModalToVideo(videoElement) {
+    const modal = document.querySelector('.modal-carousel');
+    const maxWidth = window.innerWidth * 0.9;
+    const maxHeight = window.innerHeight * 0.8;
     
-    // Resize modal when first image loads
-    if (index === 0) {
-        resizeModalToImage(imgElement);
+    let width = videoElement.videoWidth;
+    let height = videoElement.videoHeight;
+    
+    // Scale down if too large
+    if (width > maxWidth || height > maxHeight) {
+        const aspectRatio = width / height;
+        
+        if (width > maxWidth) {
+            width = maxWidth;
+            height = width / aspectRatio;
+        }
+        
+        if (height > maxHeight) {
+            height = maxHeight;
+            width = height * aspectRatio;
+        }
     }
     
-    slide.appendChild(imgElement);
-    modalSlides.appendChild(slide);
-    
-    // Create dot
-                const dot = document.createElement('span');
-                dot.className = `modal-dot ${index === 0 ? 'active' : ''}`;
-                dot.addEventListener('click', () => goToSlide(index));
-                modalDots.appendChild(dot);
-});
-
-            updateModalCarousel();
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+    modal.style.width = width + 'px';
+    modal.style.height = height + 'px';
+}
 
         function closeModal() {
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
+    // Pause any playing videos
+    const videos = modal.querySelectorAll('video');
+    videos.forEach(video => {
+        video.pause();
+        video.currentTime = 0;
+    });
+    
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
 
         function updateModalCarousel() {
             modalSlides.style.transform = `translateX(-${currentModalSlide * 100}%)`;
@@ -783,6 +877,37 @@ function setModalSize(img) {
                 });
             });
         });
+
+        // video control functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const muteBtn = document.getElementById('muteBtn');
+    
+    playPauseBtn?.addEventListener('click', () => {
+        const currentSlide = document.querySelectorAll('.modal-slide')[currentModalSlide];
+        const video = currentSlide?.querySelector('video');
+        
+        if (video) {
+            if (video.paused) {
+                video.play();
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                video.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        }
+    });
+    
+    muteBtn?.addEventListener('click', () => {
+        const currentSlide = document.querySelectorAll('.modal-slide')[currentModalSlide];
+        const video = currentSlide?.querySelector('video');
+        
+        if (video) {
+            video.muted = !video.muted;
+            muteBtn.innerHTML = video.muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
+        }
+    });
+});
     </script>
 </body>
 </html>
