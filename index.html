@@ -106,6 +106,7 @@
 
         /* Posts Section */
         .posts-header {
+            border-top: 1px solid var(--border-color);
             display: flex;
             justify-content: center;
         }
@@ -126,6 +127,13 @@
             cursor: pointer;
             transition: color var(--transition-fast);
             border-top: 1px solid transparent;
+            border: none;
+            background: none;
+            outline: none;
+        }
+
+        .tab-link:focus {
+            outline: none;
         }
 
         .tab-link.active {
@@ -583,6 +591,13 @@
                 // Tab switching
                 document.querySelectorAll('.tab-link').forEach(link => {
                     link.addEventListener('click', this.handleTabSwitch.bind(this));
+                });
+
+                // Close dialog when clicking outside
+                this.dialog.addEventListener('click', (e) => {
+                    if (e.target === this.dialog) {
+                        this.closeDialog();
+                    }
                 });
 
                 // Post opening
