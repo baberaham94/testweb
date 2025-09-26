@@ -7,57 +7,58 @@
     <title>Instagram Clone</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --bg-primary: #000000;
+            --text-primary: #ffffff;
+            --text-secondary: #8e8e8e;
+            --accent-blue: #0095f6;
+            --verified-blue: #42a5f5;
+            --border-color: #dbdbdb;
+            --overlay-bg: rgba(0, 0, 0, 0.8);
+            --hover-scale: 1.02;
+            --border-radius: 8px;
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 20px;
+            --spacing-xl: 30px;
+            --transition-fast: 0.2s ease;
+            --transition-smooth: 0.4s ease;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background-color: #000000;
-            color: #ffffff;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.5;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         .container {
             max-width: 935px;
             margin: 0 auto;
-            padding: 30px 20px;
-        }
-
-        /* Header Styles */
-        header {
-            border-bottom: none;
-            background-color: #000000;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-content {
-            max-width: 935px;
-            margin: 0 auto;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: var(--spacing-xl) var(--spacing-lg);
         }
 
         /* Profile Section */
         .profile {
             display: flex;
             margin-bottom: 44px;
-            padding: 30px 0;
+            padding: var(--spacing-xl) 0;
+            gap: var(--spacing-xl);
         }
 
         .profile-pic {
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            margin-right: 30px;
             object-fit: cover;
-            border: 3px solid #000000;
+            border: 3px solid var(--bg-primary);
         }
 
         .profile-info {
@@ -65,95 +66,78 @@
         }
 
         .profile-header {
-            display: block;
-            align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: var(--spacing-lg);
         }
 
         .profile-header h1 {
             font-size: 28px;
             font-weight: 300;
-            margin-bottom: 0px;
-            margin-right: 8px;
-            border-bottom: none;
-            display: inline-block;
-        }
-
-        .profile-header i {
+            margin-bottom: var(--spacing-sm);
             display: inline-block;
         }
 
         .verified-badge {
-            color: #0095f6;
+            color: var(--verified-blue);
             font-size: 20px;
-            font-weight: bold;
+            margin-left: var(--spacing-sm);
         }
-
-        .profile-stats {
-            display: flex;
-            margin-bottom: 20px;
-        }
-
-        .profile-stats div {
-            margin-right: 40px;
-            font-size: 16px;
-        }
-
 
         .profile-name {
             font-size: 16px;
             font-weight: 600;
-            margin-bottom: 0px;
-            border-bottom: none;
-            margin-top: 0px;
+            margin-top: var(--spacing-sm);
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 40px;
+            margin-bottom: var(--spacing-lg);
+            font-size: 16px;
         }
 
         .profile-bio p {
-            margin-bottom: 4px;
+            margin-bottom: var(--spacing-xs);
         }
 
         .profile-bio a {
-            color: #0095f6;
-            /* Instagram blue */
+            color: var(--accent-blue);
             text-decoration: none;
         }
 
         /* Posts Section */
         .posts-header {
-            border-top: 1px solid #dbdbdb;
+            border-top: 1px solid var(--border-color);
             display: flex;
             justify-content: center;
         }
 
-        .posts-header a {
+        .tab-link {
             padding: 15px 0;
-            margin: 0 30px;
+            margin: 0 var(--spacing-xl);
             text-transform: uppercase;
             font-size: 12px;
             font-weight: 600;
             letter-spacing: 1px;
-            color: #8e8e8e;
+            color: var(--text-secondary);
             text-decoration: none;
             display: flex;
             align-items: center;
+            gap: 6px;
             cursor: pointer;
-            transition: color 0.2s;
+            transition: color var(--transition-fast);
+            border-top: 1px solid transparent;
         }
 
-        .posts-header a.active {
-            color: #ffffff;
-            border-top: 1px solid #ffffff;
-        }
-
-        .posts-header i {
-            margin-right: 6px;
+        .tab-link.active {
+            color: var(--text-primary);
+            border-top-color: var(--text-primary);
         }
 
         .posts-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1px;
-            margin-top: 30px;
+            margin-top: var(--spacing-xl);
         }
 
         .tab-content {
@@ -168,14 +152,13 @@
             position: relative;
             aspect-ratio: 3/4;
             background-color: #efefef;
-            border-radius: 0;
             overflow: hidden;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: transform var(--transition-fast);
         }
 
         .post:hover {
-            transform: scale(1.02);
+            transform: scale(var(--hover-scale));
             z-index: 10;
         }
 
@@ -185,7 +168,6 @@
             object-fit: cover;
         }
 
-        /* Multiple images indicator */
         .post.multiple::after {
             content: '\f302';
             font-family: 'Font Awesome 6 Free';
@@ -198,57 +180,35 @@
             text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
         }
 
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
+        .post.reel .reel-indicator {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--spacing-xs);
+            font-size: 12px;
+        }
+
+        /* Dialog Styles */
+        .post-dialog {
+            max-width: 95vw;
+            max-height: 95vh;
+            background: var(--bg-primary);
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .post-dialog::backdrop {
+            background: var(--overlay-bg);
             backdrop-filter: blur(10px);
         }
 
-        .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        .modal-content {
-            position: relative;
-            max-width: 95vw;
-            max-height: 95vh;
-            background: white;
-            border-radius: 0px;
-            overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .modal-date {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.7);
-            margin-top: 8px;
-            letter-spacing: 0.5px;
-            /* Remove text-transform: uppercase; */
-        }
-
-        .modal-close {
+        .dialog-close {
             position: absolute;
             top: 15px;
             right: 15px;
@@ -264,18 +224,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.2s;
+            transition: background var(--transition-fast);
         }
 
-        .modal-close:hover {
+        .dialog-close:hover {
             background: rgba(0, 0, 0, 0.7);
         }
 
-        .modal-close i {
-            font-size: 18px;
-        }
-
-        .modal-carousel {
+        .dialog-carousel {
             position: relative;
             max-width: 90vw;
             max-height: 90vh;
@@ -285,13 +241,13 @@
             justify-content: center;
         }
 
-        .modal-slides {
+        .carousel-slides {
             display: flex;
-            transition: transform 0.4s ease;
+            transition: transform var(--transition-smooth);
             height: 100%;
         }
 
-        .modal-slide {
+        .carousel-slide {
             min-width: 100%;
             height: 100%;
             display: flex;
@@ -299,13 +255,14 @@
             justify-content: center;
         }
 
-        .modal-slide img {
+        .carousel-slide img,
+        .carousel-slide video {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
         }
 
-        .modal-nav {
+        .carousel-nav {
             position: absolute;
             top: 50%;
             width: 100%;
@@ -316,7 +273,7 @@
             pointer-events: none;
         }
 
-        .modal-nav button {
+        .nav-btn {
             background: rgba(255, 255, 255, 0.4);
             border: none;
             width: 40px;
@@ -327,114 +284,67 @@
             align-items: center;
             justify-content: center;
             font-size: 16px;
-            transition: all 0.2s;
+            transition: all var(--transition-fast);
             pointer-events: all;
         }
 
-        .modal-nav button:hover {
+        .nav-btn:hover:not(:disabled) {
             background: rgba(255, 255, 255, 1);
             transform: scale(1.1);
         }
 
-        .modal-nav button:disabled {
+        .nav-btn:disabled {
             opacity: 0.3;
             cursor: not-allowed;
         }
 
-        .modal-dots {
+        .carousel-dots {
             display: flex;
             justify-content: center;
             position: absolute;
             bottom: 10px;
             width: 100%;
+            gap: var(--spacing-sm);
         }
 
-        .modal-dot {
+        .carousel-dot {
             width: 8px;
             height: 8px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.4);
-            margin: 0 4px;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background var(--transition-fast);
         }
 
-        .modal-dot.active {
+        .carousel-dot.active {
             background: rgba(255, 255, 255, 0.9);
         }
 
-        .modal-info {
+        .post-info {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
             background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
             color: white;
-            padding: 40px 20px 30px;
+            padding: 40px var(--spacing-lg) var(--spacing-xl);
         }
 
-        .modal-username {
+        .post-username {
             font-weight: 600;
             margin-bottom: 5px;
         }
 
-        .modal-caption {
+        .post-caption {
             font-size: 14px;
             opacity: 0.9;
         }
 
-        .modal-date {
+        .post-date {
             font-size: 12px;
             color: rgba(255, 255, 255, 0.7);
-            text-transform: uppercase;
-            margin-top: 8px;
+            margin-top: var(--spacing-sm);
             letter-spacing: 0.5px;
-        }
-
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .posts-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 3px;
-            }
-
-            .profile {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .profile-pic {
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
-
-            .profile-stats {
-                justify-content: center;
-            }
-
-            .search-bar {
-                display: none;
-            }
-
-            .modal-carousel {
-                width: 90vw;
-                height: 90vw;
-                max-height: 70vh;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .posts-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .modal-slide video {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
         }
 
         .video-controls {
@@ -458,11 +368,64 @@
             align-items: center;
             justify-content: center;
             font-size: 16px;
-            transition: all 0.2s;
+            transition: all var(--transition-fast);
         }
 
         .video-controls button:hover {
             background: rgba(255, 255, 255, 1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .posts-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 3px;
+            }
+
+            .profile {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: var(--spacing-lg);
+            }
+
+            .profile-stats {
+                justify-content: center;
+            }
+
+            .dialog-carousel {
+                width: 90vw;
+                height: 90vw;
+                max-height: 70vh;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation utilities */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Focus management for accessibility */
+        .post:focus-visible {
+            outline: 2px solid var(--accent-blue);
+            outline-offset: 2px;
+        }
+
+        .nav-btn:focus-visible,
+        .dialog-close:focus-visible {
+            outline: 2px solid var(--accent-blue);
+            outline-offset: 2px;
         }
     </style>
 </head>
@@ -476,7 +439,7 @@
             <div class="profile-info">
                 <div class="profile-header">
                     <h1>rkive_archive</h1>
-                    <i class="fa-solid fa-circle-check" style="color: #42a5f5;"></i>
+                    <i class="fa-solid fa-circle-check verified-badge" aria-label="Verified account"></i>
                     <p class="profile-name">RM</p>
                 </div>
                 <div class="profile-stats">
@@ -494,193 +457,307 @@
 
         <!-- Posts Navigation -->
         <section class="posts-header">
-            <a href="#" class="tab-link active" data-tab="posts"><i class="fa-solid fa-table-cells"></i> Posts</a>
-            <a href="#" class="tab-link" data-tab="reels"><i class="fa-solid fa-clapperboard"></i> Reels</a>
+            <button class="tab-link active" data-tab="posts" type="button">
+                <i class="fa-solid fa-table-cells"></i> Posts
+            </button>
+            <button class="tab-link" data-tab="reels" type="button">
+                <i class="fa-solid fa-clapperboard"></i> Reels
+            </button>
         </section>
 
         <!-- Posts Tab Content -->
         <div id="posts" class="tab-content active">
             <div class="posts-grid">
                 <!-- Post with single image -->
-                <div class="post"
+                <article class="post" tabindex="0" role="button" 
                     data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/images/test1.jpg"]'
-                    data-caption="Amazing mountain views! 🏔️ #mountains #nature" data-date="2024-01-15">
-                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/test1.jpg">
-                </div>
+                    data-caption="Amazing mountain views! 🏔️ #mountains #nature" 
+                    data-date="2024-01-15"
+                    aria-label="Open post">
+                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/test1.jpg" alt="Post image">
+                </article>
 
                 <!-- Post with multiple images -->
-                <div class="post multiple"
+                <article class="post multiple" tabindex="0" role="button"
                     data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_1.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025.mp4", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_2.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_3.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_4.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_5.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_6.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_7.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_8.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_9.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_10.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_11.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_12.jpg"]'
                     data-media-types='["image", "video", "image", "image", "image", "image", "image", "image", "image", "image", "image", "image", "image"]'
-                    data-caption="감사했습니다 🎂" data-date="2025-09-13">
-                    <img
-                        src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_1.jpg">
-                </div>
+                    data-caption="감사했습니다 🎂" 
+                    data-date="2025-09-13"
+                    aria-label="Open post with multiple media items">
+                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_1.jpg" alt="Post image">
+                </article>
 
-                <!-- Post with multiple image -->
-                <div class="post multiple"
-                    data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_1.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_2.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_3.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_4.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_5.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_6.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_7.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_8.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_9.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_10.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_11.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_12.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_13.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_14.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_15.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_16.jpg"]'
-                    data-caption="사랑은 돌아오는거야" data-date="2025-09-02">
-                    <img
-                        src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_1.jpg">
-                </div>
+                <!-- Post with multiple images -->
+                <article class="post multiple" tabindex="0" role="button"
+                    data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_1.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_2.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_3.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_4.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_5.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_6.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_7.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_8.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_9.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_10.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_11.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_12.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_13.jpg", "https://raw.githubusercontent.com/baberaham2/testweb/main/images/2025/September/090225_14.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_15.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_16.jpg"]'
+                    data-caption="사랑은 돌아오는거야" 
+                    data-date="2025-09-02"
+                    aria-label="Open post with multiple images">
+                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_1.jpg" alt="Post image">
+                </article>
             </div>
         </div>
 
         <!-- Reels Tab Content -->
         <div id="reels" class="tab-content">
             <div class="posts-grid">
-                <!-- Reel posts -->
-                <div class="post reel" data-type="video"
+                <article class="post reel" tabindex="0" role="button" data-type="video"
                     data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025.mp4"]'
-                    data-caption="#광고 Art captured. @samsungtv #SamsungArtTV" data-date="2025-06-20">
-                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025_cover.jpg">
-                    <div
-                        style="position: absolute; bottom: 10px; right: 10px; color: white; background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px; font-size: 12px;">
-                        ▶ REEL</div>
-                </div>
+                    data-caption="#광고 Art captured. @samsungtv #SamsungArtTV" 
+                    data-date="2025-06-20"
+                    aria-label="Open reel video">
+                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025_cover.jpg" alt="Reel thumbnail">
+                    <div class="reel-indicator">▶ REEL</div>
+                </article>
             </div>
         </div>
 
-        <!-- Modal -->
-        <div class="modal" id="postModal">
-            <div class="modal-content">
-                <button class="modal-close"><i class="fa-duotone fa-solid fa-xmark" style="--fa-primary-color: #ffffff; --fa-secondary-color: #ffffff;"></i></button>
-                <div class="modal-carousel">
-                    <div class="modal-slides" id="modalSlides"></div>
-                    <div class="modal-nav">
-                        <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
-                        <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
-                    </div>
-                    <div class="modal-dots" id="modalDots"></div>
-                    <div class="modal-info">
-                        <div class="modal-username">rkive</div>
-                        <div class="modal-caption" id="modalCaption"></div>
-                        <div class="modal-date" id="modalDate"></div>
-                        <div class="video-controls" id="videoControls" style="display: none;">
-                            <button id="playPauseBtn"><i class="fas fa-play"></i></button>
-                            <button id="muteBtn"><i class="fas fa-volume-up"></i></button>
-                        </div>
+        <!-- Dialog -->
+        <dialog class="post-dialog" id="postDialog">
+            <button class="dialog-close" aria-label="Close post">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="dialog-carousel">
+                <div class="carousel-slides" id="carouselSlides"></div>
+                <nav class="carousel-nav" aria-label="Navigate between media items">
+                    <button class="nav-btn carousel-prev" aria-label="Previous item">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-btn carousel-next" aria-label="Next item">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </nav>
+                <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Media navigation"></div>
+                <div class="post-info">
+                    <div class="post-username">rkive</div>
+                    <div class="post-caption" id="postCaption"></div>
+                    <div class="post-date" id="postDate"></div>
+                    <div class="video-controls" id="videoControls" style="display: none;">
+                        <button id="playPauseBtn" aria-label="Play/Pause video">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button id="muteBtn" aria-label="Mute/Unmute video">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>
+        </dialog>
+    </div>
 
-        <script>
-            // Tab switching functionality
-            document.querySelectorAll('.tab-link').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
+    <script>
+        class InstagramClone {
+            constructor() {
+                this.dialog = document.getElementById('postDialog');
+                this.carouselSlides = document.getElementById('carouselSlides');
+                this.carouselDots = document.getElementById('carouselDots');
+                this.postCaption = document.getElementById('postCaption');
+                this.postDate = document.getElementById('postDate');
+                this.videoControls = document.getElementById('videoControls');
+                
+                this.currentSlide = 0;
+                this.mediaItems = [];
+                this.touchStartX = 0;
+                this.touchEndX = 0;
+                
+                this.init();
+            }
 
-                    // Remove active class from all tabs and contents
-                    document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
-                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            init() {
+                this.setupEventListeners();
+                this.setupKeyboardNavigation();
+                this.setupTouchNavigation();
+            }
 
-                    // Add active class to clicked tab and corresponding content
-                    link.classList.add('active');
-                    const tabId = link.getAttribute('data-tab');
-                    document.getElementById(tabId).classList.add('active');
+            setupEventListeners() {
+                // Tab switching
+                document.querySelectorAll('.tab-link').forEach(link => {
+                    link.addEventListener('click', this.handleTabSwitch.bind(this));
                 });
-            });
 
-            // Modal functionality
-            const modal = document.getElementById('postModal');
-            const modalSlides = document.getElementById('modalSlides');
-            const modalDots = document.getElementById('modalDots');
-            const modalCaption = document.getElementById('modalCaption');
-            const closeBtn = document.querySelector('.modal-close');
-            const prevBtn = document.querySelector('.modal-prev');
-            const nextBtn = document.querySelector('.modal-next');
+                // Post opening
+                document.addEventListener('click', this.handlePostClick.bind(this));
+                document.addEventListener('keydown', this.handlePostKeydown.bind(this));
 
-            let currentModalSlide = 0;
-            let modalImages = [];
+                // Dialog controls
+                this.dialog.querySelector('.dialog-close').addEventListener('click', this.closeDialog.bind(this));
+                this.dialog.querySelector('.carousel-prev').addEventListener('click', this.prevSlide.bind(this));
+                this.dialog.querySelector('.carousel-next').addEventListener('click', this.nextSlide.bind(this));
 
-            // Open modal when clicking on a post
-            document.addEventListener('click', (e) => {
+                // Video controls
+                document.getElementById('playPauseBtn')?.addEventListener('click', this.togglePlayPause.bind(this));
+                document.getElementById('muteBtn')?.addEventListener('click', this.toggleMute.bind(this));
+            }
+
+            setupKeyboardNavigation() {
+                document.addEventListener('keydown', (e) => {
+                    if (!this.dialog.open) return;
+
+                    switch (e.key) {
+                        case 'Escape':
+                            this.closeDialog();
+                            break;
+                        case 'ArrowLeft':
+                            e.preventDefault();
+                            this.prevSlide();
+                            break;
+                        case 'ArrowRight':
+                            e.preventDefault();
+                            this.nextSlide();
+                            break;
+                        case ' ':
+                            e.preventDefault();
+                            this.togglePlayPause();
+                            break;
+                    }
+                });
+            }
+
+            setupTouchNavigation() {
+                this.carouselSlides.addEventListener('touchstart', (e) => {
+                    this.touchStartX = e.changedTouches[0].screenX;
+                });
+
+                this.carouselSlides.addEventListener('touchend', (e) => {
+                    this.touchEndX = e.changedTouches[0].screenX;
+                    this.handleSwipe();
+                });
+            }
+
+            handleTabSwitch(e) {
+                e.preventDefault();
+                
+                document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+                e.target.classList.add('active');
+                const tabId = e.target.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            }
+
+            handlePostClick(e) {
                 const post = e.target.closest('.post');
                 if (post) {
-                    openModal(post);
+                    this.openDialog(post);
                 }
-            });
+            }
 
-            function openModal(post) {
+            handlePostKeydown(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    const post = e.target.closest('.post');
+                    if (post) {
+                        e.preventDefault();
+                        this.openDialog(post);
+                    }
+                }
+            }
+
+            openDialog(post) {
                 const images = JSON.parse(post.getAttribute('data-images'));
                 const caption = post.getAttribute('data-caption') || '';
                 const dateString = post.getAttribute('data-date') || '';
                 const isVideoPost = post.getAttribute('data-type') === 'video';
-                const mediaTypes = post.getAttribute('data-media-types') ?
-                    JSON.parse(post.getAttribute('data-media-types')) :
-                    images.map(() => 'image'); // Default to 'image' if no types specified
+                const mediaTypes = post.getAttribute('data-media-types') ? 
+                    JSON.parse(post.getAttribute('data-media-types')) : 
+                    images.map(() => 'image');
 
-                const modalDate = document.getElementById('modalDate');
-                const videoControls = document.getElementById('videoControls');
+                this.mediaItems = images;
+                this.currentSlide = 0;
+                
+                this.postCaption.textContent = caption;
+                this.postDate.textContent = dateString ? this.formatDate(dateString) : '';
 
-                modalDate.textContent = dateString ? formatInstagramDate(dateString) : '';
+                this.buildCarousel(images, mediaTypes, isVideoPost);
+                this.updateCarousel();
+                
+                this.dialog.showModal();
+                this.dialog.classList.add('fade-in');
+                
+                // Focus management
+                this.dialog.querySelector('.dialog-close').focus();
+                
+                // Prevent background scroll
+                document.body.style.overflow = 'hidden';
+            }
 
-                modalImages = images;
-                modalCaption.textContent = caption;
-                currentModalSlide = 0;
+            closeDialog() {
+                // Pause any playing videos
+                this.dialog.querySelectorAll('video').forEach(video => {
+                    video.pause();
+                    video.currentTime = 0;
+                });
 
-                // Clear and rebuild slides
-                modalSlides.innerHTML = '';
-                modalDots.innerHTML = '';
+                this.dialog.close();
+                document.body.style.overflow = 'auto';
+                
+                // Return focus to the post that was opened
+                const activePost = document.querySelector('.post:focus-within, .post:hover');
+                if (activePost) {
+                    activePost.focus();
+                }
+            }
+
+            buildCarousel(images, mediaTypes, isVideoPost) {
+                this.carouselSlides.innerHTML = '';
+                this.carouselDots.innerHTML = '';
 
                 images.forEach((src, index) => {
+                    // Create slide
                     const slide = document.createElement('div');
-                    slide.className = 'modal-slide';
+                    slide.className = 'carousel-slide';
 
                     const mediaType = mediaTypes[index] || 'image';
 
                     if (mediaType === 'video' || isVideoPost) {
-                        const videoElement = document.createElement('video');
-                        videoElement.src = src;
-                        videoElement.controls = false;
-                        videoElement.preload = 'metadata';
-                        videoElement.style.maxWidth = '100%';
-                        videoElement.style.maxHeight = '100%';
-                        videoElement.style.objectFit = 'contain';
-
-                        // Auto-resize modal to video dimensions
-                        videoElement.addEventListener('loadedmetadata', () => {
-                            if (index === 0) {
-                                resizeModalToVideo(videoElement);
-                            }
+                        const video = document.createElement('video');
+                        video.src = src;
+                        video.controls = false;
+                        video.preload = 'metadata';
+                        video.setAttribute('playsinline', '');
+                        
+                        video.addEventListener('loadedmetadata', () => {
+                            if (index === 0) this.resizeDialog(video, 'video');
                         });
 
-                        slide.appendChild(videoElement);
+                        slide.appendChild(video);
                     } else {
-                        const imgElement = document.createElement('img');
-                        imgElement.src = src;
-                        imgElement.alt = `Post image ${index + 1}`;
+                        const img = document.createElement('img');
+                        img.src = src;
+                        img.alt = `Post image ${index + 1}`;
+                        
+                        img.addEventListener('load', () => {
+                            if (index === 0) this.resizeDialog(img, 'image');
+                        });
 
-                        if (index === 0) {
-                            resizeModalToImage(imgElement);
-                        }
-
-                        slide.appendChild(imgElement);
+                        slide.appendChild(img);
                     }
 
-                    modalSlides.appendChild(slide);
+                    this.carouselSlides.appendChild(slide);
 
                     // Create dot
-                    const dot = document.createElement('span');
-                    dot.className = `modal-dot ${index === 0 ? 'active' : ''}`;
-                    dot.addEventListener('click', () => goToSlide(index));
-                    modalDots.appendChild(dot);
+                    const dot = document.createElement('button');
+                    dot.className = `carousel-dot ${index === 0 ? 'active' : ''}`;
+                    dot.setAttribute('role', 'tab');
+                    dot.setAttribute('aria-label', `Go to media item ${index + 1}`);
+                    dot.addEventListener('click', () => this.goToSlide(index));
+                    this.carouselDots.appendChild(dot);
                 });
-
-                updateModalCarousel();
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
             }
-            // function for video resizing
-            function resizeModalToVideo(videoElement) {
-                const modal = document.querySelector('.modal-carousel');
+
+            resizeDialog(element, type) {
+                const carousel = document.querySelector('.dialog-carousel');
                 const maxWidth = window.innerWidth * 0.9;
                 const maxHeight = window.innerHeight * 0.8;
 
-                let width = videoElement.videoWidth;
-                let height = videoElement.videoHeight;
+                let width, height;
+
+                if (type === 'video') {
+                    width = element.videoWidth;
+                    height = element.videoHeight;
+                } else {
+                    width = element.naturalWidth;
+                    height = element.naturalHeight;
+                }
 
                 // Scale down if too large
                 if (width > maxWidth || height > maxHeight) {
@@ -697,62 +774,110 @@
                     }
                 }
 
-                modal.style.width = width + 'px';
-                modal.style.height = height + 'px';
+                carousel.style.width = `${width}px`;
+                carousel.style.height = `${height}px`;
             }
 
-            function closeModal() {
-                // Pause any playing videos
-                const videos = modal.querySelectorAll('video');
-                videos.forEach(video => {
-                    video.pause();
-                    video.currentTime = 0;
-                });
-
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-
-            function updateModalCarousel() {
-                modalSlides.style.transform = `translateX(-${currentModalSlide * 100}%)`;
+            updateCarousel() {
+                this.carouselSlides.style.transform = `translateX(-${this.currentSlide * 100}%)`;
 
                 // Update dots
-                document.querySelectorAll('.modal-dot').forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentModalSlide);
+                this.carouselDots.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentSlide);
+                    dot.setAttribute('aria-selected', index === this.currentSlide);
                 });
 
                 // Update navigation buttons
-                prevBtn.disabled = currentModalSlide === 0;
-                nextBtn.disabled = currentModalSlide === modalImages.length - 1;
+                const prevBtn = this.dialog.querySelector('.carousel-prev');
+                const nextBtn = this.dialog.querySelector('.carousel-next');
+                
+                prevBtn.disabled = this.currentSlide === 0;
+                nextBtn.disabled = this.currentSlide === this.mediaItems.length - 1;
 
-                // Show/hide video controls based on current slide
-                const currentSlide = document.querySelectorAll('.modal-slide')[currentModalSlide];
-                const videoControls = document.getElementById('videoControls');
+                // Show/hide video controls
+                const currentSlide = this.carouselSlides.children[this.currentSlide];
                 const hasVideo = currentSlide?.querySelector('video');
 
                 if (hasVideo) {
-                    videoControls.style.display = 'flex';
+                    this.videoControls.style.display = 'flex';
                     // Reset play button state
                     const playPauseBtn = document.getElementById('playPauseBtn');
                     playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
                 } else {
-                    videoControls.style.display = 'none';
+                    this.videoControls.style.display = 'none';
                 }
             }
 
-            function goToSlide(index) {
-                // Pause any currently playing video before changing slides
-                const currentSlide = document.querySelectorAll('.modal-slide')[currentModalSlide];
+            goToSlide(index) {
+                // Pause current video
+                const currentSlide = this.carouselSlides.children[this.currentSlide];
                 const currentVideo = currentSlide?.querySelector('video');
                 if (currentVideo) {
                     currentVideo.pause();
                 }
 
-                currentModalSlide = index;
-                updateModalCarousel();
+                this.currentSlide = index;
+                this.updateCarousel();
             }
 
-            function formatInstagramDate(dateString) {
+            nextSlide() {
+                if (this.currentSlide < this.mediaItems.length - 1) {
+                    this.goToSlide(this.currentSlide + 1);
+                }
+            }
+
+            prevSlide() {
+                if (this.currentSlide > 0) {
+                    this.goToSlide(this.currentSlide - 1);
+                }
+            }
+
+            handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = this.touchStartX - this.touchEndX;
+
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        this.nextSlide();
+                    } else {
+                        this.prevSlide();
+                    }
+                }
+            }
+
+            togglePlayPause() {
+                const currentSlide = this.carouselSlides.children[this.currentSlide];
+                const video = currentSlide?.querySelector('video');
+                const playPauseBtn = document.getElementById('playPauseBtn');
+
+                if (video) {
+                    if (video.paused) {
+                        video.play();
+                        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                        playPauseBtn.setAttribute('aria-label', 'Pause video');
+                    } else {
+                        video.pause();
+                        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                        playPauseBtn.setAttribute('aria-label', 'Play video');
+                    }
+                }
+            }
+
+            toggleMute() {
+                const currentSlide = this.carouselSlides.children[this.currentSlide];
+                const video = currentSlide?.querySelector('video');
+                const muteBtn = document.getElementById('muteBtn');
+
+                if (video) {
+                    video.muted = !video.muted;
+                    muteBtn.innerHTML = video.muted ? 
+                        '<i class="fas fa-volume-mute"></i>' : 
+                        '<i class="fas fa-volume-up"></i>';
+                    muteBtn.setAttribute('aria-label', video.muted ? 'Unmute video' : 'Mute video');
+                }
+            }
+
+            formatDate(dateString) {
                 const postDate = new Date(dateString);
                 const options = {
                     year: 'numeric',
@@ -761,173 +886,24 @@
                 };
                 return postDate.toLocaleDateString('en-US', options);
             }
+        }
 
-            function nextSlide() {
-                if (currentModalSlide < modalImages.length - 1) {
-                    // Pause current video
-                    const currentSlide = document.querySelectorAll('.modal-slide')[currentModalSlide];
-                    const currentVideo = currentSlide?.querySelector('video');
-                    if (currentVideo) {
-                        currentVideo.pause();
-                    }
-
-                    currentModalSlide++;
-                    updateModalCarousel();
-                }
-            }
-
-            function prevSlide() {
-                if (currentModalSlide > 0) {
-                    // Pause current video
-                    const currentSlide = document.querySelectorAll('.modal-slide')[currentModalSlide];
-                    const currentVideo = currentSlide?.querySelector('video');
-                    if (currentVideo) {
-                        currentVideo.pause();
-                    }
-
-                    currentModalSlide--;
-                    updateModalCarousel();
-                }
-            }
-
-            function resizeModalToImage(imgElement) {
-                const modal = document.querySelector('.modal-carousel');
-                const img = imgElement;
-
-                // Wait for image to load
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new InstagramClone();
+            
+            // Add loading animation to images
+            document.querySelectorAll('img').forEach(img => {
                 if (img.complete) {
-                    setModalSize(img);
+                    img.style.opacity = '1';
                 } else {
-                    img.onload = () => setModalSize(img);
-                }
-            }
-
-            function setModalSize(img) {
-                const modal = document.querySelector('.modal-carousel');
-                const maxWidth = window.innerWidth * 0.9;
-                const maxHeight = window.innerHeight * 0.8;
-
-                let width = img.naturalWidth;
-                let height = img.naturalHeight;
-
-                // Scale down if too large
-                if (width > maxWidth || height > maxHeight) {
-                    const aspectRatio = width / height;
-
-                    if (width > maxWidth) {
-                        width = maxWidth;
-                        height = width / aspectRatio;
-                    }
-
-                    if (height > maxHeight) {
-                        height = maxHeight;
-                        width = height * aspectRatio;
-                    }
-                }
-
-                modal.style.width = width + 'px';
-                modal.style.height = height + 'px';
-            }
-
-            // Event listeners
-            closeBtn.addEventListener('click', closeModal);
-            nextBtn.addEventListener('click', nextSlide);
-            prevBtn.addEventListener('click', prevSlide);
-
-            // Close modal when clicking outside
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeModal();
-                }
-            });
-
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (modal.classList.contains('active')) {
-                    switch (e.key) {
-                        case 'Escape':
-                            closeModal();
-                            break;
-                        case 'ArrowLeft':
-                            prevSlide();
-                            break;
-                        case 'ArrowRight':
-                            nextSlide();
-                            break;
-                    }
-                }
-            });
-
-            // Touch/swipe support for mobile
-            let touchStartX = 0;
-            let touchEndX = 0;
-
-            modalSlides.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            });
-
-            modalSlides.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-            });
-
-            function handleSwipe() {
-                const swipeThreshold = 50;
-                const diff = touchStartX - touchEndX;
-
-                if (Math.abs(diff) > swipeThreshold) {
-                    if (diff > 0) {
-                        // Swipe left - next slide
-                        nextSlide();
-                    } else {
-                        // Swipe right - previous slide
-                        prevSlide();
-                    }
-                }
-            }
-
-            // Add smooth animations and transitions
-            document.addEventListener('DOMContentLoaded', () => {
-                // Add loading animation to images
-                const images = document.querySelectorAll('img');
-                images.forEach(img => {
                     img.addEventListener('load', () => {
                         img.style.opacity = '1';
                     });
-                });
+                }
             });
-
-            // video control functionality
-            document.addEventListener('DOMContentLoaded', () => {
-                const playPauseBtn = document.getElementById('playPauseBtn');
-                const muteBtn = document.getElementById('muteBtn');
-
-                playPauseBtn?.addEventListener('click', () => {
-                    const currentSlide = document.querySelectorAll('.modal-slide')[currentModalSlide];
-                    const video = currentSlide?.querySelector('video');
-
-                    if (video) {
-                        if (video.paused) {
-                            video.play();
-                            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                        } else {
-                            video.pause();
-                            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-                        }
-                    }
-                });
-
-                muteBtn?.addEventListener('click', () => {
-                    const currentSlide = document.querySelectorAll('.modal-slide')[currentModalSlide];
-                    const video = currentSlide?.querySelector('video');
-
-                    if (video) {
-                        video.muted = !video.muted;
-                        muteBtn.innerHTML = video.muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
-                    }
-                });
-            });
-        </script>
+        });
+    </script>
 </body>
 
 </html>
