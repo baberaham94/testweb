@@ -501,7 +501,7 @@
                 <article class="post multiple" tabindex="0" role="button"
                     data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_1.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025.mp4", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_2.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_3.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_4.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_5.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_6.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_7.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_8.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_9.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_10.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_11.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_12.jpg"]'
                     data-media-types='["image", "video", "image", "image", "image", "image", "image", "image", "image", "image", "image", "image", "image"]'
-                    data-caption="감사했습니다 🎂" data-date="2025-09-13" aria-label="Open post with multiple media items">
+                    data-caption="감사했습니다 🎂" data-date="September, 13 2025" aria-label="Open post with multiple media items">
                     <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_1.jpg"
                         alt="Post image">
                 </article>
@@ -903,13 +903,7 @@
             }
 
             formatDate(dateString) {
-                const postDate = new Date(dateString);
-                const options = {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                };
-                return postDate.toLocaleDateString('en-US', options);
+                return dateString;
             }
         }
 
