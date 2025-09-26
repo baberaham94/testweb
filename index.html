@@ -106,7 +106,6 @@
 
         /* Posts Section */
         .posts-header {
-            border-top: 1px solid var(--border-color);
             display: flex;
             justify-content: center;
         }
@@ -198,10 +197,15 @@
             max-height: 95vh;
             background: var(--bg-primary);
             border: none;
-            border-radius: var(--border-radius);
+            border-radius: 0%;
             padding: 0;
             overflow: hidden;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
         }
 
         .post-dialog::backdrop {
@@ -312,13 +316,14 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
             cursor: pointer;
             transition: background var(--transition-fast);
         }
 
         .carousel-dot.active {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 1);
         }
 
         .post-info {
@@ -409,8 +414,13 @@
 
         /* Animation utilities */
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .fade-in {
@@ -470,31 +480,29 @@
         <div id="posts" class="tab-content active">
             <div class="posts-grid">
                 <!-- Post with single image -->
-                <article class="post" tabindex="0" role="button" 
+                <article class="post" tabindex="0" role="button"
                     data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/images/test1.jpg"]'
-                    data-caption="Amazing mountain views! 🏔️ #mountains #nature" 
-                    data-date="2024-01-15"
+                    data-caption="Amazing mountain views! 🏔️ #mountains #nature" data-date="2024-01-15"
                     aria-label="Open post">
-                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/test1.jpg" alt="Post image">
+                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/test1.jpg"
+                        alt="Post image">
                 </article>
 
                 <!-- Post with multiple images -->
                 <article class="post multiple" tabindex="0" role="button"
                     data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_1.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025.mp4", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_2.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_3.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_4.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_5.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_6.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_7.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_8.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_9.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_10.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_11.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_12.jpg"]'
                     data-media-types='["image", "video", "image", "image", "image", "image", "image", "image", "image", "image", "image", "image", "image"]'
-                    data-caption="감사했습니다 🎂" 
-                    data-date="2025-09-13"
-                    aria-label="Open post with multiple media items">
-                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_1.jpg" alt="Post image">
+                    data-caption="감사했습니다 🎂" data-date="2025-09-13" aria-label="Open post with multiple media items">
+                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_1.jpg"
+                        alt="Post image">
                 </article>
 
                 <!-- Post with multiple images -->
                 <article class="post multiple" tabindex="0" role="button"
                     data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_1.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_2.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_3.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_4.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_5.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_6.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_7.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_8.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_9.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_10.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_11.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_12.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_13.jpg", "https://raw.githubusercontent.com/baberaham2/testweb/main/images/2025/September/090225_14.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_15.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_16.jpg"]'
-                    data-caption="사랑은 돌아오는거야" 
-                    data-date="2025-09-02"
-                    aria-label="Open post with multiple images">
-                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_1.jpg" alt="Post image">
+                    data-caption="사랑은 돌아오는거야" data-date="2025-09-02" aria-label="Open post with multiple images">
+                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_1.jpg"
+                        alt="Post image">
                 </article>
             </div>
         </div>
@@ -504,10 +512,10 @@
             <div class="posts-grid">
                 <article class="post reel" tabindex="0" role="button" data-type="video"
                     data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025.mp4"]'
-                    data-caption="#광고 Art captured. @samsungtv #SamsungArtTV" 
-                    data-date="2025-06-20"
+                    data-caption="#광고 Art captured. @samsungtv #SamsungArtTV" data-date="2025-06-20"
                     aria-label="Open reel video">
-                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025_cover.jpg" alt="Reel thumbnail">
+                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025_cover.jpg"
+                        alt="Reel thumbnail">
                     <div class="reel-indicator">▶ REEL</div>
                 </article>
             </div>
@@ -555,12 +563,12 @@
                 this.postCaption = document.getElementById('postCaption');
                 this.postDate = document.getElementById('postDate');
                 this.videoControls = document.getElementById('videoControls');
-                
+
                 this.currentSlide = 0;
                 this.mediaItems = [];
                 this.touchStartX = 0;
                 this.touchEndX = 0;
-                
+
                 this.init();
             }
 
@@ -627,7 +635,7 @@
 
             handleTabSwitch(e) {
                 e.preventDefault();
-                
+
                 document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
                 document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
 
@@ -658,25 +666,25 @@
                 const caption = post.getAttribute('data-caption') || '';
                 const dateString = post.getAttribute('data-date') || '';
                 const isVideoPost = post.getAttribute('data-type') === 'video';
-                const mediaTypes = post.getAttribute('data-media-types') ? 
-                    JSON.parse(post.getAttribute('data-media-types')) : 
+                const mediaTypes = post.getAttribute('data-media-types') ?
+                    JSON.parse(post.getAttribute('data-media-types')) :
                     images.map(() => 'image');
 
                 this.mediaItems = images;
                 this.currentSlide = 0;
-                
+
                 this.postCaption.textContent = caption;
                 this.postDate.textContent = dateString ? this.formatDate(dateString) : '';
 
                 this.buildCarousel(images, mediaTypes, isVideoPost);
                 this.updateCarousel();
-                
+
                 this.dialog.showModal();
                 this.dialog.classList.add('fade-in');
-                
+
                 // Focus management
                 this.dialog.querySelector('.dialog-close').focus();
-                
+
                 // Prevent background scroll
                 document.body.style.overflow = 'hidden';
             }
@@ -690,7 +698,7 @@
 
                 this.dialog.close();
                 document.body.style.overflow = 'auto';
-                
+
                 // Return focus to the post that was opened
                 const activePost = document.querySelector('.post:focus-within, .post:hover');
                 if (activePost) {
@@ -715,7 +723,7 @@
                         video.controls = false;
                         video.preload = 'metadata';
                         video.setAttribute('playsinline', '');
-                        
+
                         video.addEventListener('loadedmetadata', () => {
                             if (index === 0) this.resizeDialog(video, 'video');
                         });
@@ -725,7 +733,7 @@
                         const img = document.createElement('img');
                         img.src = src;
                         img.alt = `Post image ${index + 1}`;
-                        
+
                         img.addEventListener('load', () => {
                             if (index === 0) this.resizeDialog(img, 'image');
                         });
@@ -791,7 +799,7 @@
                 // Update navigation buttons
                 const prevBtn = this.dialog.querySelector('.carousel-prev');
                 const nextBtn = this.dialog.querySelector('.carousel-next');
-                
+
                 prevBtn.disabled = this.currentSlide === 0;
                 nextBtn.disabled = this.currentSlide === this.mediaItems.length - 1;
 
@@ -871,8 +879,8 @@
 
                 if (video) {
                     video.muted = !video.muted;
-                    muteBtn.innerHTML = video.muted ? 
-                        '<i class="fas fa-volume-mute"></i>' : 
+                    muteBtn.innerHTML = video.muted ?
+                        '<i class="fas fa-volume-mute"></i>' :
                         '<i class="fas fa-volume-up"></i>';
                     muteBtn.setAttribute('aria-label', video.muted ? 'Unmute video' : 'Mute video');
                 }
@@ -892,7 +900,7 @@
         // Initialize when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             new InstagramClone();
-            
+
             // Add loading animation to images
             document.querySelectorAll('img').forEach(img => {
                 if (img.complete) {
