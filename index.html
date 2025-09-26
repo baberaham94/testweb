@@ -797,6 +797,13 @@
             }
 
             function goToSlide(index) {
+                // Pause any currently playing video before changing slides
+                const currentSlide = document.querySelectorAll('.modal-slide')[currentModalSlide];
+                const currentVideo = currentSlide?.querySelector('video');
+                if (currentVideo) {
+                    currentVideo.pause();
+                }
+
                 currentModalSlide = index;
                 updateModalCarousel();
             }
@@ -813,6 +820,13 @@
 
             function nextSlide() {
                 if (currentModalSlide < modalImages.length - 1) {
+                    // Pause current video
+                    const currentSlide = document.querySelectorAll('.modal-slide')[currentModalSlide];
+                    const currentVideo = currentSlide?.querySelector('video');
+                    if (currentVideo) {
+                        currentVideo.pause();
+                    }
+
                     currentModalSlide++;
                     updateModalCarousel();
                 }
@@ -820,6 +834,13 @@
 
             function prevSlide() {
                 if (currentModalSlide > 0) {
+                    // Pause current video
+                    const currentSlide = document.querySelectorAll('.modal-slide')[currentModalSlide];
+                    const currentVideo = currentSlide?.querySelector('video');
+                    if (currentVideo) {
+                        currentVideo.pause();
+                    }
+
                     currentModalSlide--;
                     updateModalCarousel();
                 }
