@@ -204,10 +204,11 @@
         }
 
         .posts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 28px;
             margin-top: 30px;
+            width: 100%;
         }
 
         .tab-content {
@@ -226,6 +227,10 @@
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.2s ease;
+            flex: 1 1 calc(33.333% - 19px);
+            /* 3 columns accounting for gap */
+            min-width: 0;
+            /* Important for flexbox shrinking */
         }
 
         .post:hover {
@@ -236,6 +241,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
         }
 
         .post.multiple::after {
@@ -269,16 +275,22 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         @keyframes slideIn {
-            from { 
+            from {
                 opacity: 0;
                 transform: scale(0.9) translateY(-20px);
             }
-            to { 
+
+            to {
                 opacity: 1;
                 transform: scale(1) translateY(0);
             }
@@ -474,8 +486,16 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .posts-grid {
-                grid-template-columns: repeat(2, 1fr);
                 gap: 3px;
+            }
+
+            .post {
+                flex: 1 1 calc(33.333% - 2px);
+            }
+
+            .container {
+                padding: 30px 0;
+                /* Remove side padding on mobile */
             }
 
             .profile {
@@ -516,16 +536,20 @@
 
         @media (max-width: 480px) {
             .posts-grid {
-                grid-template-columns: 1fr;
+                gap: 2px;
             }
-            
+
             .posts-header a {
                 margin: 0 15px;
                 font-size: 11px;
             }
-            
+
             .container {
-                padding: 15px 10px;
+                max-width: 935px;
+                margin: 0 auto;
+                padding: 30px 20px;
+                width: 100%;
+                /* Ensure container takes full width */
             }
         }
 
@@ -595,14 +619,15 @@
                 <div class="post"
                     data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/images/test1.jpg"]'
                     data-caption="Amazing mountain views! 🏔️ #mountains #nature" data-date="2024-01-15">
-                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/test1.jpg" loading="lazy">
+                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/test1.jpg"
+                        loading="lazy">
                 </div>
 
                 <div class="post multiple"
                     data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_1.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025.mp4", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_2.jpg"]'
-                    data-media-types='["image", "video", "image"]'
-                    data-caption="감사했습니다 🎂" data-date="2025-09-13">
-                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_1.jpg" loading="lazy">
+                    data-media-types='["image", "video", "image"]' data-caption="감사했습니다 🎂" data-date="2025-09-13">
+                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_1.jpg"
+                        loading="lazy">
                 </div>
             </div>
         </div>
@@ -614,7 +639,8 @@
                 <div class="post reel" data-type="video"
                     data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025.mp4"]'
                     data-caption="#광고 Art captured. @samsungtv #SamsungArtTV" data-date="2025-06-20">
-                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025_cover.jpg" loading="lazy">
+                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025_cover.jpg"
+                        loading="lazy">
                     <div class="reel-indicator">▶ REEL</div>
                 </div>
             </div>
@@ -627,8 +653,10 @@
                 <div class="dialog-carousel">
                     <div class="dialog-slides" id="dialogSlides"></div>
                     <div class="dialog-nav">
-                        <button class="dialog-prev" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
-                        <button class="dialog-next" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+                        <button class="dialog-prev" aria-label="Previous slide"><i
+                                class="fas fa-chevron-left"></i></button>
+                        <button class="dialog-next" aria-label="Next slide"><i
+                                class="fas fa-chevron-right"></i></button>
                     </div>
                     <div class="dialog-dots" id="dialogDots"></div>
                     <div class="dialog-info">
@@ -637,7 +665,8 @@
                         <div class="dialog-date" id="dialogDate"></div>
                         <div class="video-controls" id="videoControls" style="display: none;">
                             <button id="playPauseBtn" aria-label="Play/pause video"><i class="fas fa-play"></i></button>
-                            <button id="muteBtn" aria-label="Mute/unmute video"><i class="fas fa-volume-up"></i></button>
+                            <button id="muteBtn" aria-label="Mute/unmute video"><i
+                                    class="fas fa-volume-up"></i></button>
                         </div>
                     </div>
                 </div>
@@ -656,7 +685,7 @@
                 this.dateElement = document.getElementById('dialogDate');
                 this.currentSlide = 0;
                 this.mediaItems = [];
-                
+
                 this.init();
             }
 
@@ -754,7 +783,7 @@
                     slide.setAttribute('aria-label', `Slide ${index + 1} of ${mediaItems.length}`);
 
                     const mediaType = mediaTypes[index] || 'image';
-                    
+
                     if (mediaType === 'video') {
                         const video = document.createElement('video');
                         video.src = src;
@@ -822,14 +851,14 @@
                 const muteBtn = document.getElementById('muteBtn');
 
                 const updatePlayButton = () => {
-                    playPauseBtn.innerHTML = video.paused ? 
-                        '<i class="fas fa-play"></i>' : 
+                    playPauseBtn.innerHTML = video.paused ?
+                        '<i class="fas fa-play"></i>' :
                         '<i class="fas fa-pause"></i>';
                 };
 
                 const updateMuteButton = () => {
-                    muteBtn.innerHTML = video.muted ? 
-                        '<i class="fas fa-volume-mute"></i>' : 
+                    muteBtn.innerHTML = video.muted ?
+                        '<i class="fas fa-volume-mute"></i>' :
                         '<i class="fas fa-volume-up"></i>';
                 };
 
@@ -880,7 +909,7 @@
                     video.pause();
                     video.currentTime = 0;
                 });
-                
+
                 this.dialog.close();
             }
 
@@ -924,10 +953,10 @@
 
         // Add loading state for images
         document.querySelectorAll('img').forEach(img => {
-            img.addEventListener('load', function() {
+            img.addEventListener('load', function () {
                 this.classList.add('loaded');
             });
-            
+
             // Fallback for already loaded images
             if (img.complete) {
                 img.classList.add('loaded');
