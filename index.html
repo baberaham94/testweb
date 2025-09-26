@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,19 +12,19 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
-        
+
         body {
             background-color: #fafafa;
             color: #262626;
             line-height: 1.5;
         }
-        
+
         .container {
             max-width: 935px;
             margin: 0 auto;
             padding: 30px 20px;
         }
-        
+
         /* Header Styles */
         header {
             border-bottom: none;
@@ -32,7 +33,7 @@
             top: 0;
             z-index: 100;
         }
-        
+
         .header-content {
             max-width: 935px;
             margin: 0 auto;
@@ -41,7 +42,7 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
             font-family: 'Grand Hotel', cursive;
             font-size: 24px;
@@ -51,7 +52,7 @@
             -webkit-text-fill-color: transparent;
             font-weight: bold;
         }
-        
+
         .search-bar {
             background: #fafafa;
             border: 1px solid #dbdbdb;
@@ -59,7 +60,7 @@
             padding: 8px 16px;
             width: 268px;
         }
-        
+
         .search-bar input {
             border: none;
             background: transparent;
@@ -67,25 +68,25 @@
             outline: none;
             font-size: 14px;
         }
-        
+
         .nav-icons a {
             margin-left: 22px;
             color: #262626;
             font-size: 22px;
             transition: transform 0.2s;
         }
-        
+
         .nav-icons a:hover {
             transform: scale(1.1);
         }
-        
+
         /* Profile Section */
         .profile {
             display: flex;
             margin-bottom: 44px;
             padding: 30px 0;
         }
-        
+
         .profile-pic {
             width: 150px;
             height: 150px;
@@ -94,62 +95,67 @@
             object-fit: cover;
             border: 3px solid #dbdbdb;
         }
+
         .profile-info {
-    flex: 1;
-    }
-    .profile-header {
-    display: block;
-    align-items: center;
-    margin-bottom: 20px;
-    }
+            flex: 1;
+        }
+
+        .profile-header {
+            display: block;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
         .profile-header h1 {
-    font-size: 28px;
-    font-weight: 300;
-    margin-bottom: 0px;
-    margin-right: 8px;
-    border-bottom: none;
-    }
-        
-       .verified-badge {
-    color: #0095f6;
-    font-size: 20px;
-    font-weight: bold;
-    }
+            font-size: 28px;
+            font-weight: 300;
+            margin-bottom: 0px;
+            margin-right: 8px;
+            border-bottom: none;
+        }
 
-    .profile-stats {
-    display: flex;
-    margin-bottom: 20px;
-    }
+        .verified-badge {
+            color: #0095f6;
+            font-size: 20px;
+            font-weight: bold;
+        }
 
-    .profile-stats div {
-    margin-right: 40px;
-    font-size: 16px;
-    }
-        
-        
+        .profile-stats {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .profile-stats div {
+            margin-right: 40px;
+            font-size: 16px;
+        }
+
+
         .profile-name {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 0px;
-    border-bottom: none;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 0px;
+            border-bottom: none;
             margin-top: 0px;
-    }
-        
+        }
+
         .profile-bio p {
             margin-bottom: 4px;
         }
+
         .profile-bio a {
-    color: #0095f6; /* Instagram blue */
-    text-decoration: none;
-}
-        
+            color: #0095f6;
+            /* Instagram blue */
+            text-decoration: none;
+        }
+
         /* Posts Section */
         .posts-header {
             border-top: 1px solid #dbdbdb;
             display: flex;
             justify-content: center;
         }
-        
+
         .posts-header a {
             padding: 15px 0;
             margin: 0 30px;
@@ -164,31 +170,31 @@
             cursor: pointer;
             transition: color 0.2s;
         }
-        
+
         .posts-header a.active {
             color: #262626;
             border-top: 1px solid #262626;
         }
-        
+
         .posts-header i {
             margin-right: 6px;
         }
-        
+
         .posts-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 28px;
             margin-top: 30px;
         }
-        
+
         .tab-content {
             display: none;
         }
-        
+
         .tab-content.active {
             display: block;
         }
-        
+
         .post {
             position: relative;
             aspect-ratio: 1;
@@ -198,17 +204,17 @@
             cursor: pointer;
             transition: transform 0.2s;
         }
-        
+
         .post:hover {
             transform: scale(1.02);
         }
-        
+
         .post img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         /* Multiple images indicator */
         .post.multiple::after {
             content: '□□';
@@ -217,9 +223,9 @@
             right: 10px;
             color: white;
             font-size: 14px;
-            text-shadow: 0 0 4px rgba(0,0,0,0.5);
+            text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
         }
-        
+
         /* Modal Styles */
         .modal {
             display: none;
@@ -232,38 +238,44 @@
             z-index: 1000;
             backdrop-filter: blur(10px);
         }
-        
+
         .modal.active {
             display: flex;
             align-items: center;
             justify-content: center;
             animation: fadeIn 0.3s ease;
         }
-        
+
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
-        
+
         .modal-content {
-    position: relative;
-    max-width: 95vw;
-    max-height: 95vh;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-}
+            position: relative;
+            max-width: 95vw;
+            max-height: 95vh;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
         .modal-date {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.7);
-    margin-top: 8px;
-    letter-spacing: 0.5px;
-    /* Remove text-transform: uppercase; */
-}
-        
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 8px;
+            letter-spacing: 0.5px;
+            /* Remove text-transform: uppercase; */
+        }
+
         .modal-close {
             position: absolute;
             top: 15px;
@@ -282,27 +294,27 @@
             justify-content: center;
             transition: background 0.2s;
         }
-        
+
         .modal-close:hover {
             background: rgba(0, 0, 0, 0.7);
         }
-        
+
         .modal-carousel {
-    position: relative;
-    max-width: 90vw;
-    max-height: 90vh;
-    background: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-        
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            background: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .modal-slides {
             display: flex;
             transition: transform 0.4s ease;
             height: 100%;
         }
-        
+
         .modal-slide {
             min-width: 100%;
             height: 100%;
@@ -310,13 +322,13 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .modal-slide img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
         }
-        
+
         .modal-nav {
             position: absolute;
             top: 50%;
@@ -327,7 +339,7 @@
             padding: 0 15px;
             pointer-events: none;
         }
-        
+
         .modal-nav button {
             background: rgba(255, 255, 255, 0.8);
             border: none;
@@ -342,17 +354,17 @@
             transition: all 0.2s;
             pointer-events: all;
         }
-        
+
         .modal-nav button:hover {
             background: rgba(255, 255, 255, 1);
             transform: scale(1.1);
         }
-        
+
         .modal-nav button:disabled {
             opacity: 0.3;
             cursor: not-allowed;
         }
-        
+
         .modal-dots {
             display: flex;
             justify-content: center;
@@ -360,7 +372,7 @@
             bottom: 20px;
             width: 100%;
         }
-        
+
         .modal-dot {
             width: 8px;
             height: 8px;
@@ -370,11 +382,11 @@
             cursor: pointer;
             transition: background 0.2s;
         }
-        
+
         .modal-dot.active {
             background: rgba(255, 255, 255, 0.9);
         }
-        
+
         .modal-info {
             position: absolute;
             bottom: 0;
@@ -384,24 +396,25 @@
             color: white;
             padding: 40px 20px 20px;
         }
-        
+
         .modal-username {
             font-weight: 600;
             margin-bottom: 5px;
         }
-        
+
         .modal-caption {
             font-size: 14px;
             opacity: 0.9;
         }
+
         .modal-date {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.7);
-    text-transform: uppercase;
-    margin-top: 8px;
-    letter-spacing: 0.5px;
-}
-        
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            margin-top: 8px;
+            letter-spacing: 0.5px;
+        }
+
         /* Sample feed post (keeping original for reference) */
         .feed-post {
             background: white;
@@ -409,13 +422,13 @@
             margin-bottom: 20px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
-        
+
         .post-header {
             display: flex;
             align-items: center;
             padding: 16px;
         }
-        
+
         .post-avatar {
             width: 32px;
             height: 32px;
@@ -423,496 +436,526 @@
             margin-right: 12px;
             object-fit: cover;
         }
-        
+
         .post-username {
             font-weight: 600;
             font-size: 14px;
         }
-        
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .posts-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 3px;
             }
-            
+
             .profile {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
             }
-            
+
             .profile-pic {
                 margin-right: 0;
                 margin-bottom: 20px;
             }
-            
+
             .profile-stats {
                 justify-content: center;
             }
-            
+
             .search-bar {
                 display: none;
             }
-            
+
             .modal-carousel {
                 width: 90vw;
                 height: 90vw;
                 max-height: 70vh;
             }
         }
-        
+
         @media (max-width: 480px) {
             .posts-grid {
                 grid-template-columns: 1fr;
             }
         }
 
-.modal-slide video {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-}
+        .modal-slide video {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
 
-.video-controls {
-    position: absolute;
-    bottom: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-    z-index: 10;
-}
+        .video-controls {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
 
-.video-controls button {
-    background: rgba(255, 255, 255, 0.8);
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    transition: all 0.2s;
-}
+        .video-controls button {
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
 
-.video-controls button:hover {
-    background: rgba(255, 255, 255, 1);
-}
+        .video-controls button:hover {
+            background: rgba(255, 255, 255, 1);
+        }
     </style>
 </head>
-<body>    
+
+<body>
     <div class="container">
         <!-- Profile Section -->
         <section class="profile">
-    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/profile.jpg" alt="Profile Picture" class="profile-pic">
-    <div class="profile-info">
-        <div class="profile-header">
-            <h1>rkive_archive</h1>
-            <p class="profile-name">RM</p>
-        </div>
-        <div class="profile-stats">
-            <div><strong>126</strong> posts</div>
-            <div><strong>48.7M</strong> followers</div>
-            <div><strong>8</strong> following</div>
-        </div>
-        <div class="profile-bio">
-            <p>no g no b</p>
-            <a href="#">@bts.bighitofficial</a><br>
-            <a href="#">@rpwprpwprpwp</a>
-        </div>
-    </div>
-    </section>
-        
+            <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/profile.jpg"
+                alt="Profile Picture" class="profile-pic">
+            <div class="profile-info">
+                <div class="profile-header">
+                    <h1>rkive_archive</h1>
+                    <p class="profile-name">RM</p>
+                </div>
+                <div class="profile-stats">
+                    <div><strong>126</strong> posts</div>
+                    <div><strong>48.7M</strong> followers</div>
+                    <div><strong>8</strong> following</div>
+                </div>
+                <div class="profile-bio">
+                    <p>no g no b</p>
+                    <a href="#">@bts.bighitofficial</a><br>
+                    <a href="#">@rpwprpwprpwp</a>
+                </div>
+            </div>
+        </section>
+
         <!-- Posts Navigation -->
         <section class="posts-header">
             <a href="#" class="tab-link active" data-tab="posts"><i class="fas fa-th"></i> Posts</a>
             <a href="#" class="tab-link" data-tab="reels"><i class="fas fa-tv"></i> Reels</a>
         </section>
-        
+
         <!-- Posts Tab Content -->
         <div id="posts" class="tab-content active">
             <div class="posts-grid">
                 <!-- Post with single image -->
-                <div class="post" data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/images/test1.jpg"]' data-caption="Amazing mountain views! 🏔️ #mountains #nature" data-date="2024-01-15">
+                <div class="post"
+                    data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/images/test1.jpg"]'
+                    data-caption="Amazing mountain views! 🏔️ #mountains #nature" data-date="2024-01-15">
                     <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/test1.jpg">
                 </div>
-                
+
                 <!-- Post with multiple images -->
-                <div class="post multiple" data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_1.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_2.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_3.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_4.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_5.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_6.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_7.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_8.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_9.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_10.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_11.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_12.jpg"]' data-caption="감사했습니다 🎂" data-date="2025-09-13">
-                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_1.jpg">
+                <div class="post multiple"
+                    data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_1.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025.mp4", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_2.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_3.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_4.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_5.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_6.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_7.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_8.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_9.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_10.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_11.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_12.jpg"]'
+                    data-media-types='["image", "video", "image", "image", "image", "image", "image", "image", "image", "image", "image", "image", "image"]'
+                    data-caption="감사했습니다 🎂" data-date="2025-09-13">
+                    <img
+                        src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/091325_1.jpg">
                 </div>
-                
+
                 <!-- Post with multiple image -->
-                <div class="post multiple" data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_1.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_2.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_3.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_4.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_5.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_6.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_7.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_8.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_9.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_10.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_11.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_12.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_13.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_14.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_15.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_16.jpg"]' data-caption="사랑은 돌아오는거야" data-date="2025-09-02">
-                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_1.jpg">
+                <div class="post multiple"
+                    data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_1.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_2.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_3.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_4.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_5.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_6.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_7.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_8.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_9.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_10.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_11.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_12.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_13.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_14.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_15.jpg", "https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_16.jpg"]'
+                    data-caption="사랑은 돌아오는거야" data-date="2025-09-02">
+                    <img
+                        src="https://raw.githubusercontent.com/baberaham94/testweb/main/images/2025/September/090225_1.jpg">
                 </div>
             </div>
         </div>
-        
+
         <!-- Reels Tab Content -->
-<div id="reels" class="tab-content">
-    <div class="posts-grid">
-        <!-- Reel posts -->
-        <div class="post reel" 
-             data-type="video"
-             data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025.mp4"]' 
-             data-caption="#광고 Art captured. @samsungtv #SamsungArtTV" 
-             data-date="2025-06-20">
-            <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025_cover.jpg">
-            <div style="position: absolute; bottom: 10px; right: 10px; color: white; background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px; font-size: 12px;">▶ REEL</div>
-        </div>
-    </div>
-</div>
-    
-    <!-- Modal -->
-    <div class="modal" id="postModal">
-        <div class="modal-content">
-            <button class="modal-close">&times;</button>
-            <div class="modal-carousel">
-                <div class="modal-slides" id="modalSlides"></div>
-                <div class="modal-nav">
-                    <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
-                    <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
+        <div id="reels" class="tab-content">
+            <div class="posts-grid">
+                <!-- Reel posts -->
+                <div class="post reel" data-type="video"
+                    data-images='["https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025.mp4"]'
+                    data-caption="#광고 Art captured. @samsungtv #SamsungArtTV" data-date="2025-06-20">
+                    <img src="https://raw.githubusercontent.com/baberaham94/testweb/main/videos/062025_cover.jpg">
+                    <div
+                        style="position: absolute; bottom: 10px; right: 10px; color: white; background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px; font-size: 12px;">
+                        ▶ REEL</div>
                 </div>
-                <div class="modal-dots" id="modalDots"></div>
-                <div class="modal-info">
-                    <div class="modal-username">jane_doe</div>
-                    <div class="modal-caption" id="modalCaption"></div>
-                    <div class="modal-date" id="modalDate"></div>
-                    <div class="video-controls" id="videoControls" style="display: none;">
-                        <button id="playPauseBtn"><i class="fas fa-play"></i></button>
-                        <button id="muteBtn"><i class="fas fa-volume-up"></i></button>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal" id="postModal">
+            <div class="modal-content">
+                <button class="modal-close">&times;</button>
+                <div class="modal-carousel">
+                    <div class="modal-slides" id="modalSlides"></div>
+                    <div class="modal-nav">
+                        <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="modal-dots" id="modalDots"></div>
+                    <div class="modal-info">
+                        <div class="modal-username">jane_doe</div>
+                        <div class="modal-caption" id="modalCaption"></div>
+                        <div class="modal-date" id="modalDate"></div>
+                        <div class="video-controls" id="videoControls" style="display: none;">
+                            <button id="playPauseBtn"><i class="fas fa-play"></i></button>
+                            <button id="muteBtn"><i class="fas fa-volume-up"></i></button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script>
-        // Tab switching functionality
-        document.querySelectorAll('.tab-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                // Remove active class from all tabs and contents
-                document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                
-                // Add active class to clicked tab and corresponding content
-                link.classList.add('active');
-                const tabId = link.getAttribute('data-tab');
-                document.getElementById(tabId).classList.add('active');
-            });
-        });
+        <script>
+            // Tab switching functionality
+            document.querySelectorAll('.tab-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
 
-        // Modal functionality
-        const modal = document.getElementById('postModal');
-        const modalSlides = document.getElementById('modalSlides');
-        const modalDots = document.getElementById('modalDots');
-        const modalCaption = document.getElementById('modalCaption');
-        const closeBtn = document.querySelector('.modal-close');
-        const prevBtn = document.querySelector('.modal-prev');
-        const nextBtn = document.querySelector('.modal-next');
+                    // Remove active class from all tabs and contents
+                    document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
 
-        let currentModalSlide = 0;
-        let modalImages = [];
-
-        // Open modal when clicking on a post
-        document.addEventListener('click', (e) => {
-            const post = e.target.closest('.post');
-            if (post) {
-                openModal(post);
-            }
-        });
-
-       function openModal(post) {
-    const images = JSON.parse(post.getAttribute('data-images'));
-    const caption = post.getAttribute('data-caption') || '';
-    const dateString = post.getAttribute('data-date') || '';
-    const isVideo = post.getAttribute('data-type') === 'video';
-    const modalDate = document.getElementById('modalDate');
-    const videoControls = document.getElementById('videoControls');
-    
-    modalDate.textContent = dateString ? formatInstagramDate(dateString) : '';
-    
-    modalImages = images;
-    modalCaption.textContent = caption;
-    currentModalSlide = 0;
-
-    // Clear and rebuild slides
-    modalSlides.innerHTML = '';
-    modalDots.innerHTML = '';
-
-    images.forEach((src, index) => {
-        const slide = document.createElement('div');
-        slide.className = 'modal-slide';
-        
-        if (isVideo) {
-            const videoElement = document.createElement('video');
-            videoElement.src = src;
-            videoElement.controls = false; // We'll use custom controls
-            videoElement.preload = 'metadata';
-            videoElement.style.maxWidth = '100%';
-            videoElement.style.maxHeight = '100%';
-            videoElement.style.objectFit = 'contain';
-            
-            // Auto-resize modal to video dimensions
-            videoElement.addEventListener('loadedmetadata', () => {
-                if (index === 0) {
-                    resizeModalToVideo(videoElement);
-                }
-            });
-            
-            slide.appendChild(videoElement);
-            videoControls.style.display = 'flex';
-        } else {
-            const imgElement = document.createElement('img');
-            imgElement.src = src;
-            imgElement.alt = `Post image ${index + 1}`;
-            
-            if (index === 0) {
-                resizeModalToImage(imgElement);
-            }
-            
-            slide.appendChild(imgElement);
-            videoControls.style.display = 'none';
-        }
-        
-        modalSlides.appendChild(slide);
-        
-        // Create dot
-        const dot = document.createElement('span');
-        dot.className = `modal-dot ${index === 0 ? 'active' : ''}`;
-        dot.addEventListener('click', () => goToSlide(index));
-        modalDots.appendChild(dot);
-    });
-
-    updateModalCarousel();
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-        // function for video resizing
-function resizeModalToVideo(videoElement) {
-    const modal = document.querySelector('.modal-carousel');
-    const maxWidth = window.innerWidth * 0.9;
-    const maxHeight = window.innerHeight * 0.8;
-    
-    let width = videoElement.videoWidth;
-    let height = videoElement.videoHeight;
-    
-    // Scale down if too large
-    if (width > maxWidth || height > maxHeight) {
-        const aspectRatio = width / height;
-        
-        if (width > maxWidth) {
-            width = maxWidth;
-            height = width / aspectRatio;
-        }
-        
-        if (height > maxHeight) {
-            height = maxHeight;
-            width = height * aspectRatio;
-        }
-    }
-    
-    modal.style.width = width + 'px';
-    modal.style.height = height + 'px';
-}
-
-        function closeModal() {
-    // Pause any playing videos
-    const videos = modal.querySelectorAll('video');
-    videos.forEach(video => {
-        video.pause();
-        video.currentTime = 0;
-    });
-    
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
-
-        function updateModalCarousel() {
-            modalSlides.style.transform = `translateX(-${currentModalSlide * 100}%)`;
-            
-            // Update dots
-            document.querySelectorAll('.modal-dot').forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentModalSlide);
-            });
-
-            // Update navigation buttons
-            prevBtn.disabled = currentModalSlide === 0;
-            nextBtn.disabled = currentModalSlide === modalImages.length - 1;
-        }
-
-        function goToSlide(index) {
-            currentModalSlide = index;
-            updateModalCarousel();
-        }
-        
-        function formatInstagramDate(dateString) {
-    const postDate = new Date(dateString);
-    const options = { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
-    };
-    return postDate.toLocaleDateString('en-US', options);
-}
-
-        function nextSlide() {
-            if (currentModalSlide < modalImages.length - 1) {
-                currentModalSlide++;
-                updateModalCarousel();
-            }
-        }
-
-        function prevSlide() {
-            if (currentModalSlide > 0) {
-                currentModalSlide--;
-                updateModalCarousel();
-            }
-        }
-
-        function resizeModalToImage(imgElement) {
-    const modal = document.querySelector('.modal-carousel');
-    const img = imgElement;
-    
-    // Wait for image to load
-    if (img.complete) {
-        setModalSize(img);
-    } else {
-        img.onload = () => setModalSize(img);
-    }
-}
-
-function setModalSize(img) {
-    const modal = document.querySelector('.modal-carousel');
-    const maxWidth = window.innerWidth * 0.9;
-    const maxHeight = window.innerHeight * 0.8;
-    
-    let width = img.naturalWidth;
-    let height = img.naturalHeight;
-    
-    // Scale down if too large
-    if (width > maxWidth || height > maxHeight) {
-        const aspectRatio = width / height;
-        
-        if (width > maxWidth) {
-            width = maxWidth;
-            height = width / aspectRatio;
-        }
-        
-        if (height > maxHeight) {
-            height = maxHeight;
-            width = height * aspectRatio;
-        }
-    }
-    
-    modal.style.width = width + 'px';
-    modal.style.height = height + 'px';
-}
-
-        // Event listeners
-        closeBtn.addEventListener('click', closeModal);
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
-
-        // Close modal when clicking outside
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (modal.classList.contains('active')) {
-                switch(e.key) {
-                    case 'Escape':
-                        closeModal();
-                        break;
-                    case 'ArrowLeft':
-                        prevSlide();
-                        break;
-                    case 'ArrowRight':
-                        nextSlide();
-                        break;
-                }
-            }
-        });
-
-        // Touch/swipe support for mobile
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        modalSlides.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-
-        modalSlides.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
-
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            const diff = touchStartX - touchEndX;
-
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) {
-                    // Swipe left - next slide
-                    nextSlide();
-                } else {
-                    // Swipe right - previous slide
-                    prevSlide();
-                }
-            }
-        }
-
-        // Add smooth animations and transitions
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add loading animation to images
-            const images = document.querySelectorAll('img');
-            images.forEach(img => {
-                img.addEventListener('load', () => {
-                    img.style.opacity = '1';
+                    // Add active class to clicked tab and corresponding content
+                    link.classList.add('active');
+                    const tabId = link.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
                 });
             });
-        });
 
-        // video control functionality
-document.addEventListener('DOMContentLoaded', () => {
-    const playPauseBtn = document.getElementById('playPauseBtn');
-    const muteBtn = document.getElementById('muteBtn');
-    
-    playPauseBtn?.addEventListener('click', () => {
-        const currentSlide = document.querySelectorAll('.modal-slide')[currentModalSlide];
-        const video = currentSlide?.querySelector('video');
-        
-        if (video) {
-            if (video.paused) {
-                video.play();
-                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            } else {
-                video.pause();
-                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            // Modal functionality
+            const modal = document.getElementById('postModal');
+            const modalSlides = document.getElementById('modalSlides');
+            const modalDots = document.getElementById('modalDots');
+            const modalCaption = document.getElementById('modalCaption');
+            const closeBtn = document.querySelector('.modal-close');
+            const prevBtn = document.querySelector('.modal-prev');
+            const nextBtn = document.querySelector('.modal-next');
+
+            let currentModalSlide = 0;
+            let modalImages = [];
+
+            // Open modal when clicking on a post
+            document.addEventListener('click', (e) => {
+                const post = e.target.closest('.post');
+                if (post) {
+                    openModal(post);
+                }
+            });
+
+            function openModal(post) {
+                const images = JSON.parse(post.getAttribute('data-images'));
+                const caption = post.getAttribute('data-caption') || '';
+                const dateString = post.getAttribute('data-date') || '';
+                const isVideoPost = post.getAttribute('data-type') === 'video';
+                const mediaTypes = post.getAttribute('data-media-types') ?
+                    JSON.parse(post.getAttribute('data-media-types')) :
+                    images.map(() => 'image'); // Default to 'image' if no types specified
+
+                const modalDate = document.getElementById('modalDate');
+                const videoControls = document.getElementById('videoControls');
+
+                modalDate.textContent = dateString ? formatInstagramDate(dateString) : '';
+
+                modalImages = images;
+                modalCaption.textContent = caption;
+                currentModalSlide = 0;
+
+                // Clear and rebuild slides
+                modalSlides.innerHTML = '';
+                modalDots.innerHTML = '';
+
+                images.forEach((src, index) => {
+                    const slide = document.createElement('div');
+                    slide.className = 'modal-slide';
+
+                    const mediaType = mediaTypes[index] || 'image';
+
+                    if (mediaType === 'video' || isVideoPost) {
+                        const videoElement = document.createElement('video');
+                        videoElement.src = src;
+                        videoElement.controls = false;
+                        videoElement.preload = 'metadata';
+                        videoElement.style.maxWidth = '100%';
+                        videoElement.style.maxHeight = '100%';
+                        videoElement.style.objectFit = 'contain';
+
+                        // Auto-resize modal to video dimensions
+                        videoElement.addEventListener('loadedmetadata', () => {
+                            if (index === 0) {
+                                resizeModalToVideo(videoElement);
+                            }
+                        });
+
+                        slide.appendChild(videoElement);
+                    } else {
+                        const imgElement = document.createElement('img');
+                        imgElement.src = src;
+                        imgElement.alt = `Post image ${index + 1}`;
+
+                        if (index === 0) {
+                            resizeModalToImage(imgElement);
+                        }
+
+                        slide.appendChild(imgElement);
+                    }
+
+                    modalSlides.appendChild(slide);
+
+                    // Create dot
+                    const dot = document.createElement('span');
+                    dot.className = `modal-dot ${index === 0 ? 'active' : ''}`;
+                    dot.addEventListener('click', () => goToSlide(index));
+                    modalDots.appendChild(dot);
+                });
+
+                updateModalCarousel();
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
             }
-        }
-    });
-    
-    muteBtn?.addEventListener('click', () => {
-        const currentSlide = document.querySelectorAll('.modal-slide')[currentModalSlide];
-        const video = currentSlide?.querySelector('video');
-        
-        if (video) {
-            video.muted = !video.muted;
-            muteBtn.innerHTML = video.muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
-        }
-    });
-});
-    </script>
+            // function for video resizing
+            function resizeModalToVideo(videoElement) {
+                const modal = document.querySelector('.modal-carousel');
+                const maxWidth = window.innerWidth * 0.9;
+                const maxHeight = window.innerHeight * 0.8;
+
+                let width = videoElement.videoWidth;
+                let height = videoElement.videoHeight;
+
+                // Scale down if too large
+                if (width > maxWidth || height > maxHeight) {
+                    const aspectRatio = width / height;
+
+                    if (width > maxWidth) {
+                        width = maxWidth;
+                        height = width / aspectRatio;
+                    }
+
+                    if (height > maxHeight) {
+                        height = maxHeight;
+                        width = height * aspectRatio;
+                    }
+                }
+
+                modal.style.width = width + 'px';
+                modal.style.height = height + 'px';
+            }
+
+            function closeModal() {
+                // Pause any playing videos
+                const videos = modal.querySelectorAll('video');
+                videos.forEach(video => {
+                    video.pause();
+                    video.currentTime = 0;
+                });
+
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            function updateModalCarousel() {
+                modalSlides.style.transform = `translateX(-${currentModalSlide * 100}%)`;
+
+                // Update dots
+                document.querySelectorAll('.modal-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentModalSlide);
+                });
+
+                // Update navigation buttons
+                prevBtn.disabled = currentModalSlide === 0;
+                nextBtn.disabled = currentModalSlide === modalImages.length - 1;
+
+                // Show/hide video controls based on current slide
+                const currentSlide = document.querySelectorAll('.modal-slide')[currentModalSlide];
+                const videoControls = document.getElementById('videoControls');
+                const hasVideo = currentSlide?.querySelector('video');
+
+                if (hasVideo) {
+                    videoControls.style.display = 'flex';
+                    // Reset play button state
+                    const playPauseBtn = document.getElementById('playPauseBtn');
+                    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                } else {
+                    videoControls.style.display = 'none';
+                }
+            }
+
+            function goToSlide(index) {
+                currentModalSlide = index;
+                updateModalCarousel();
+            }
+
+            function formatInstagramDate(dateString) {
+                const postDate = new Date(dateString);
+                const options = {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                };
+                return postDate.toLocaleDateString('en-US', options);
+            }
+
+            function nextSlide() {
+                if (currentModalSlide < modalImages.length - 1) {
+                    currentModalSlide++;
+                    updateModalCarousel();
+                }
+            }
+
+            function prevSlide() {
+                if (currentModalSlide > 0) {
+                    currentModalSlide--;
+                    updateModalCarousel();
+                }
+            }
+
+            function resizeModalToImage(imgElement) {
+                const modal = document.querySelector('.modal-carousel');
+                const img = imgElement;
+
+                // Wait for image to load
+                if (img.complete) {
+                    setModalSize(img);
+                } else {
+                    img.onload = () => setModalSize(img);
+                }
+            }
+
+            function setModalSize(img) {
+                const modal = document.querySelector('.modal-carousel');
+                const maxWidth = window.innerWidth * 0.9;
+                const maxHeight = window.innerHeight * 0.8;
+
+                let width = img.naturalWidth;
+                let height = img.naturalHeight;
+
+                // Scale down if too large
+                if (width > maxWidth || height > maxHeight) {
+                    const aspectRatio = width / height;
+
+                    if (width > maxWidth) {
+                        width = maxWidth;
+                        height = width / aspectRatio;
+                    }
+
+                    if (height > maxHeight) {
+                        height = maxHeight;
+                        width = height * aspectRatio;
+                    }
+                }
+
+                modal.style.width = width + 'px';
+                modal.style.height = height + 'px';
+            }
+
+            // Event listeners
+            closeBtn.addEventListener('click', closeModal);
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            // Close modal when clicking outside
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (modal.classList.contains('active')) {
+                    switch (e.key) {
+                        case 'Escape':
+                            closeModal();
+                            break;
+                        case 'ArrowLeft':
+                            prevSlide();
+                            break;
+                        case 'ArrowRight':
+                            nextSlide();
+                            break;
+                    }
+                }
+            });
+
+            // Touch/swipe support for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            modalSlides.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            modalSlides.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        // Swipe left - next slide
+                        nextSlide();
+                    } else {
+                        // Swipe right - previous slide
+                        prevSlide();
+                    }
+                }
+            }
+
+            // Add smooth animations and transitions
+            document.addEventListener('DOMContentLoaded', () => {
+                // Add loading animation to images
+                const images = document.querySelectorAll('img');
+                images.forEach(img => {
+                    img.addEventListener('load', () => {
+                        img.style.opacity = '1';
+                    });
+                });
+            });
+
+            // video control functionality
+            document.addEventListener('DOMContentLoaded', () => {
+                const playPauseBtn = document.getElementById('playPauseBtn');
+                const muteBtn = document.getElementById('muteBtn');
+
+                playPauseBtn?.addEventListener('click', () => {
+                    const currentSlide = document.querySelectorAll('.modal-slide')[currentModalSlide];
+                    const video = currentSlide?.querySelector('video');
+
+                    if (video) {
+                        if (video.paused) {
+                            video.play();
+                            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                        } else {
+                            video.pause();
+                            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                        }
+                    }
+                });
+
+                muteBtn?.addEventListener('click', () => {
+                    const currentSlide = document.querySelectorAll('.modal-slide')[currentModalSlide];
+                    const video = currentSlide?.querySelector('video');
+
+                    if (video) {
+                        video.muted = !video.muted;
+                        muteBtn.innerHTML = video.muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
+                    }
+                });
+            });
+        </script>
 </body>
+
 </html>
